@@ -33,7 +33,7 @@ body{margin:0;background:#0e0f1d}
   --droid:#4ce07b;     /* android */
   --pome:#ff6b9d;      /* apple */
   --misc:#b57bff;      /* otros */
-  min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--void);color:var(--text);
+  height:100vh;height:100dvh;display:flex;flex-direction:column;background:var(--void);color:var(--text);
   font-family:"Silkscreen","Courier New",monospace;-webkit-font-smoothing:none;color-scheme:dark;
 }
 #ar button{font-family:inherit;color:inherit;cursor:pointer;border-radius:0}
@@ -41,7 +41,7 @@ body{margin:0;background:#0e0f1d}
 #ar h1,#ar p{margin:0}
 
 /* ---------- HUD superior ---------- */
-#ar .hud{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px;border-bottom:4px solid var(--line);flex-wrap:wrap}
+#ar .hud{flex:none;display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px;border-bottom:4px solid var(--line);flex-wrap:wrap}
 #ar .hud>svg{width:clamp(28px,7.5vw,34px);height:clamp(28px,7.5vw,34px);flex:none;fill:var(--gold)}
 #ar .hud b{flex:1;min-width:0;font-size:clamp(12.5px,3.5vw,16px);line-height:1.5;letter-spacing:.06em;font-weight:400;color:var(--gold)}
 /* el wifi va encendiendo arcos de dentro a fuera, como buscando senal */
@@ -64,13 +64,16 @@ body{margin:0;background:#0e0f1d}
 #ar .pdf:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--dark)}
 
 /* ---------- zona central ---------- */
-#ar main{flex:1;display:flex;flex-direction:column;padding:clamp(20px,5vh,40px) 16px}
-#ar .pantalla{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,5vh,40px)}
+#ar main{flex:1;min-height:0;position:relative;overflow:hidden}
+#ar .lienzo{height:100%;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;
+  padding:clamp(14px,3.4vh,30px) 16px}
+/* margin-block:auto centra si sobra sitio y no recorta por arriba si falta */
+#ar .pantalla{margin-block:auto;width:100%;display:flex;flex-direction:column;gap:clamp(16px,3.4vh,32px)}
 #ar .pantalla[hidden]{display:none}
 #ar .pantalla:focus{outline:none}
 #ar .ask{text-align:center;display:grid;justify-items:center}
 #ar h1{font-family:"Press Start 2P","Courier New",monospace;font-size:clamp(14px,4.2vw,24px);
-  line-height:1.75;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;max-width:16ch}
+  line-height:1.6;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;max-width:16ch}
 
 /* ---------- fichas de dispositivo ---------- */
 #ar .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(132px,100%),1fr));gap:clamp(12px,2.5vw,18px);
@@ -97,6 +100,11 @@ body{margin:0;background:#0e0f1d}
 #ar .c2{--c:var(--droid)}
 #ar .c3{--c:var(--pome)}
 #ar .c4{--c:var(--misc)}
+/* la rejilla de 6 va mas apretada: son el doble de fichas en el mismo hueco */
+#ar .g6 .card{padding:11px 8px 10px;gap:7px}
+#ar .g6 .slot{max-width:54px;padding:7px;border-width:2px}
+#ar .g6 .label{font-size:clamp(8.5px,1.8vw,10px)}
+#ar .g6 .meta{font-size:10px;line-height:1.5}
 /* ficha que aun no lleva a ninguna parte: se niega con un temblor */
 #ar .card.no{animation:niega .3s steps(1)}
 @keyframes niega{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
@@ -111,7 +119,7 @@ body{margin:0;background:#0e0f1d}
 #ar .volver:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--dark)}
 
 /* ---------- barrido en mosaico entre pantallas ---------- */
-#ar .malla{position:fixed;inset:0;z-index:50;pointer-events:none;visibility:hidden;display:grid;
+#ar .malla{position:absolute;inset:0;z-index:5;pointer-events:none;visibility:hidden;display:grid;
   grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(8,1fr)}
 #ar .malla i{background:var(--void);transform:scale(0)}
 #ar .malla.tapa,#ar .malla.abre{visibility:visible}
@@ -138,12 +146,28 @@ body{margin:0;background:#0e0f1d}
   83%,100%{transform:translateX(0)}}
 
 /* ---------- creditos ---------- */
-#ar .cred{padding:13px 16px calc(13px + env(safe-area-inset-bottom,0px));border-top:4px solid var(--line);
+#ar .cred{flex:none;padding:13px 16px calc(13px + env(safe-area-inset-bottom,0px));border-top:4px solid var(--line);
   text-align:center;font-size:clamp(10px,2.4vw,12px);letter-spacing:.07em;line-height:1.8;color:var(--dim)}
 #ar .cred a{color:var(--gold);text-decoration:none;border-bottom:2px solid var(--gold-off);padding:1px 3px}
 #ar .cred a:hover{background:var(--gold);color:var(--void);border-bottom-color:var(--gold)}
 @media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}#ar .malla{display:none}}
 @media (max-width:660px){#ar .g4,#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}}
+/* pantallas bajas: se aprieta todo para no tener que desplazar */
+@media (max-height:700px){
+  #ar .lienzo{padding-block:12px}
+  #ar .pantalla{gap:14px}
+  #ar .zona{gap:12px}
+  #ar h1{font-size:clamp(13px,3.6vw,19px)}
+  #ar .slot{max-width:58px}
+  #ar .g6 .slot{max-width:44px;padding:5px}
+  #ar .g6 .card{padding:8px 6px;gap:5px}
+}
+/* pantallas muy bajas (movil apaisado): las aclaraciones ceden el sitio */
+@media (max-height:640px){
+  #ar .lienzo{padding-block:9px}
+  #ar .zona{gap:10px}
+  #ar .g6 .meta{display:none}
+}
 @media (max-width:600px){#ar .pdf .larga{display:none}}
 @media (max-width:360px){#ar .meta{display:none}}
 </style>
@@ -185,6 +209,7 @@ body{margin:0;background:#0e0f1d}
   </div>
 
   <main>
+    <div class="lienzo">
 
     <section class="pantalla" data-p="inicio" tabindex="-1">
     <div class="ask">
@@ -329,13 +354,13 @@ body{margin:0;background:#0e0f1d}
       </div>
     </section>
 
+    </div>
+    <div class="malla" id="malla" aria-hidden="true"></div>
   </main>
 
   <footer class="cred">
     Dise&ntilde;ado por <a href="https://elprofedelabata.es/" target="_blank" rel="noopener">el profe de la bata</a>
   </footer>
-
-  <div class="malla" id="malla" aria-hidden="true"></div>
 
 </div>
 
