@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Andared Arcade</title>
+<meta name="description" content="Gu&iacute;a interactiva para conectarse a Andared_Corporativo, la wifi de los centros educativos p&uacute;blicos de Andaluc&iacute;a.">
+<meta name="theme-color" content="#0e0f1d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Andared Arcade">
+<meta property="og:description" content="Elige tu dispositivo y con&eacute;ctate a la wifi del centro paso a paso.">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap">
+<style>
+#ar *{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#0e0f1d}
+#ar{
+  /* paleta cabina arcade -- colores planos, sin degradados */
+  --void:#0e0f1d;      /* fondo de pantalla */
+  --screen:#191d36;    /* superficie de las fichas */
+  --inset:#0a0c18;     /* hueco interior donde vive el icono */
+  --line:#343c66;      /* marco en reposo */
+  --dark:#05060e;      /* sombra maciza */
+  --text:#e9ecfb;
+  --dim:#7e88b8;
+  --gold:#ffcb3d;      /* HUD y aviso inferior */
+  --pc:#45d7ff;        /* ordenador */
+  --droid:#4ce07b;     /* android */
+  --pome:#ff6b9d;      /* apple */
+  --misc:#b57bff;      /* otros */
+  min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--void);color:var(--text);
+  font-family:"Silkscreen","Courier New",monospace;-webkit-font-smoothing:none;color-scheme:dark;
+}
+#ar button{font-family:inherit;color:inherit;cursor:pointer;border-radius:0}
+#ar :focus-visible{outline:4px solid var(--gold);outline-offset:4px}
+#ar h1,#ar p{margin:0}
+
+/* ---------- HUD superior ---------- */
+#ar .hud{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px;border-bottom:4px solid var(--line);flex-wrap:wrap}
+#ar .hud svg{width:22px;height:22px;flex:none;fill:var(--gold)}
+#ar .hud b{font-size:13px;letter-spacing:.09em;font-weight:400;color:var(--gold);white-space:nowrap}
+#ar .bars{display:flex;align-items:flex-end;gap:3px;margin-left:auto;height:16px}
+#ar .bars i{width:5px;background:var(--droid)}
+#ar .bars i:nth-child(1){height:5px}
+#ar .bars i:nth-child(2){height:9px}
+#ar .bars i:nth-child(3){height:13px}
+#ar .bars i:nth-child(4){height:16px;background:var(--line)}
+
+/* ---------- zona central ---------- */
+#ar main{flex:1;display:flex;flex-direction:column;
+  justify-content:center;gap:clamp(20px,5vh,40px);padding:clamp(20px,5vh,40px) 16px}
+#ar .ask{text-align:center;display:grid;gap:14px;justify-items:center}
+#ar h1{font-family:"Press Start 2P","Courier New",monospace;font-size:clamp(14px,4.2vw,24px);
+  line-height:1.75;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;max-width:16ch}
+#ar .sub{font-size:clamp(12px,2.6vw,14px);color:var(--dim);letter-spacing:.05em;max-width:34ch;line-height:1.7}
+
+/* ---------- fichas de dispositivo ---------- */
+#ar .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:clamp(12px,2.5vw,18px);
+  width:100%;max-width:700px;margin:0 auto}
+#ar .card{display:grid;justify-items:center;gap:10px;padding:16px 10px 14px;background:var(--screen);
+  border:4px solid var(--line);box-shadow:0 7px 0 0 var(--dark);
+  transition:transform .08s steps(2),box-shadow .08s steps(2),border-color .08s steps(2)}
+#ar .card:hover{border-color:var(--c);transform:translateY(-3px);box-shadow:0 10px 0 0 var(--dark)}
+#ar .card:active{transform:translateY(7px);box-shadow:0 0 0 0 var(--dark)}
+#ar .slot{width:100%;max-width:74px;aspect-ratio:1;background:var(--inset);border:3px solid var(--void);
+  display:grid;place-items:center;padding:9px}
+#ar .slot svg{width:100%;height:auto;display:block}
+#ar .p1{fill:var(--c)}
+#ar .p2{fill:var(--inset)}
+#ar .p3{fill:var(--dark)}
+#ar .label{font-family:"Press Start 2P","Courier New",monospace;font-size:clamp(9px,1.9vw,11px);
+  line-height:1.5;letter-spacing:.02em;text-align:center}
+#ar .card:hover .label{color:var(--c)}
+#ar .meta{font-size:11px;line-height:1.6;letter-spacing:.04em;color:var(--dim);text-align:center;text-wrap:balance}
+#ar .c1{--c:var(--pc)}
+#ar .c2{--c:var(--droid)}
+#ar .c3{--c:var(--pome)}
+#ar .c4{--c:var(--misc)}
+
+/* ---------- aviso inferior ---------- */
+#ar .foot{display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 16px calc(13px + env(safe-area-inset-bottom,0px));
+  border-top:4px solid var(--line);font-size:12px;letter-spacing:.11em;color:var(--gold);text-align:center}
+#ar .foot i{width:9px;height:9px;background:var(--gold);flex:none;animation:bl 1.1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}}
+@media (max-width:360px){#ar .meta{display:none}}
+</style>
+</head>
+<body>
+
+<div id="ar">
+
+  <div class="hud">
+    <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+      <rect x="4" y="2" width="8" height="1"/><rect x="2" y="3" width="2" height="1"/><rect x="12" y="3" width="2" height="1"/>
+      <rect x="1" y="4" width="1" height="2"/><rect x="14" y="4" width="1" height="2"/>
+      <rect x="5" y="5" width="6" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="11" y="6" width="1" height="1"/>
+      <rect x="3" y="7" width="1" height="1"/><rect x="12" y="7" width="1" height="1"/>
+      <rect x="6" y="8" width="4" height="1"/><rect x="5" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/>
+      <rect x="7" y="11" width="2" height="2"/>
+    </svg>
+    <b>ANDARED_CORPORATIVO</b>
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  </div>
+
+  <main>
+    <div class="ask">
+      <h1>Elige tu dispositivo</h1>
+      <p class="sub">Wifi de los centros educativos de Andaluc&iacute;a</p>
+    </div>
+
+    <div class="grid">
+
+      <button type="button" class="card c1">
+        <span class="slot">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+            <rect class="p1" x="1" y="2" width="14" height="10"/>
+            <rect class="p2" x="3" y="4" width="10" height="6"/>
+            <rect class="p1" x="5" y="5" width="6" height="1"/>
+            <rect class="p1" x="5" y="7" width="4" height="1"/>
+            <rect class="p1" x="6" y="12" width="4" height="2"/>
+            <rect class="p1" x="3" y="14" width="10" height="2"/>
+          </svg>
+        </span>
+        <span class="label">Ordenador</span>
+        <span class="meta">Windows, Linux o Chromebook</span>
+      </button>
+
+      <button type="button" class="card c2">
+        <span class="slot">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+            <rect class="p1" x="3" y="0" width="1" height="1"/><rect class="p1" x="4" y="1" width="1" height="1"/>
+            <rect class="p1" x="12" y="0" width="1" height="1"/><rect class="p1" x="11" y="1" width="1" height="1"/>
+            <rect class="p1" x="5" y="2" width="6" height="1"/>
+            <rect class="p1" x="4" y="3" width="8" height="1"/>
+            <rect class="p1" x="3" y="4" width="10" height="3"/>
+            <rect class="p2" x="5" y="5" width="2" height="1"/><rect class="p2" x="9" y="5" width="2" height="1"/>
+            <rect class="p1" x="3" y="8" width="10" height="5"/>
+            <rect class="p1" x="0" y="8" width="2" height="4"/><rect class="p1" x="14" y="8" width="2" height="4"/>
+            <rect class="p1" x="5" y="13" width="2" height="3"/><rect class="p1" x="9" y="13" width="2" height="3"/>
+          </svg>
+        </span>
+        <span class="label">Android</span>
+        <span class="meta">M&oacute;vil o tablet</span>
+      </button>
+
+      <button type="button" class="card c3">
+        <span class="slot">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+            <rect class="p1" x="9" y="0" width="3" height="1"/><rect class="p1" x="8" y="1" width="3" height="1"/>
+            <rect class="p1" x="7" y="2" width="1" height="2"/>
+            <rect class="p1" x="3" y="4" width="4" height="1"/><rect class="p1" x="9" y="4" width="4" height="1"/>
+            <rect class="p1" x="2" y="5" width="12" height="1"/>
+            <rect class="p1" x="2" y="6" width="10" height="1"/>
+            <rect class="p1" x="2" y="7" width="9" height="1"/>
+            <rect class="p1" x="2" y="8" width="10" height="1"/>
+            <rect class="p1" x="2" y="9" width="12" height="2"/>
+            <rect class="p1" x="3" y="11" width="10" height="1"/>
+            <rect class="p1" x="4" y="12" width="8" height="1"/>
+            <rect class="p1" x="4" y="13" width="3" height="1"/><rect class="p1" x="9" y="13" width="3" height="1"/>
+          </svg>
+        </span>
+        <span class="label">Apple</span>
+        <span class="meta">iPhone, iPad o Mac</span>
+      </button>
+
+      <button type="button" class="card c4">
+        <span class="slot">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+            <rect class="p1" x="0" y="0" width="16" height="16"/>
+            <rect class="p2" x="2" y="2" width="12" height="12"/>
+            <rect class="p1" x="2" y="2" width="2" height="2"/><rect class="p1" x="12" y="2" width="2" height="2"/>
+            <rect class="p1" x="2" y="12" width="2" height="2"/><rect class="p1" x="12" y="12" width="2" height="2"/>
+            <rect class="p1" x="6" y="4" width="4" height="1"/>
+            <rect class="p1" x="5" y="5" width="2" height="1"/><rect class="p1" x="9" y="5" width="2" height="1"/>
+            <rect class="p1" x="9" y="6" width="2" height="1"/>
+            <rect class="p1" x="8" y="7" width="2" height="1"/>
+            <rect class="p1" x="7" y="8" width="2" height="2"/>
+            <rect class="p1" x="7" y="11" width="2" height="2"/>
+          </svg>
+        </span>
+        <span class="label">Otros</span>
+        <span class="meta">Paneles y gafas RV</span>
+      </button>
+
+    </div>
+  </main>
+
+  <p class="foot"><i aria-hidden="true"></i>Pulsa una ficha para empezar</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Documento original de la Junta (6 MB). Descomenta si quieres publicarlo junto a la guia.
+*.pdf
+
+# Bocetos previos que ya no se publican
+andared-sites-snippet.html
+andared-retro.html
