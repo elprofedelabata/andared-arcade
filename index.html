@@ -149,6 +149,29 @@ body{margin:0;background:#0e0f1d}
 #ar .pasos li::before{content:counter(paso);width:26px;height:26px;background:var(--c);color:var(--void);
   font-family:"Press Start 2P","Courier New",monospace;font-size:10px;display:grid;place-items:center}
 #ar .pasos p{font-size:clamp(11.5px,2.5vw,13.5px);line-height:1.8}
+#ar .pasos .cont{display:flex;flex-direction:column;gap:11px;min-width:0}
+#ar .pasos b,#ar .apunte b{font-weight:400;color:var(--text);background:var(--inset);border:2px solid var(--line);padding:0 4px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+#ar .pasos code{font-family:inherit;color:var(--c);background:var(--inset);border:2px solid var(--line);padding:0 4px}
+#ar .apunte{font-size:11.5px;line-height:1.75;color:var(--dim)}
+
+/* la captura va en un bisel: una pantalla dentro de la maquina */
+#ar .captura{align-self:flex-start;width:auto;max-width:100%;padding:6px;background:var(--inset);
+  border:3px solid var(--line);cursor:zoom-in;line-height:0;transition:border-color .08s steps(2)}
+#ar .captura:hover{border-color:var(--c)}
+#ar .captura img{display:block;max-width:100%;height:auto}
+
+#ar .ajustes{border:3px solid var(--line);background:var(--inset)}
+#ar .ajustes>div{padding:8px 11px;border-top:2px solid var(--screen)}
+#ar .ajustes>div:first-child{border-top:0}
+#ar .ajustes dt{font-size:10px;letter-spacing:.07em;color:var(--dim);line-height:1.5}
+#ar .ajustes dd{font-size:12.5px;line-height:1.55;color:var(--c)}
+
+/* ampliar la captura */
+#ar .lupa{position:fixed;inset:0;z-index:60;background:#05060eee;padding:18px;cursor:zoom-out;
+  display:none;align-items:center;justify-content:center}
+#ar .lupa.abierta{display:flex}
+#ar .lupa img{max-width:100%;max-height:100%;border:4px solid var(--gold);background:#fff}
 
 /* ---------- barrido en mosaico entre pantallas ---------- */
 #ar .malla{position:absolute;inset:0;z-index:5;pointer-events:none;visibility:hidden;display:grid;
@@ -401,22 +424,57 @@ body{margin:0;background:#0e0f1d}
       </div>
 
       <div class="proc" data-proc="conectar">
-        <p class="pendiente">Contenido de ejemplo, todav&iacute;a sin volcar desde la gu&iacute;a.</p>
         <ol class="pasos">
-            <li><p>Paso de ejemplo. Aqu&iacute; ir&aacute; la primera indicaci&oacute;n del procedimiento de conexi&oacute;n.</p></li>
-            <li><p>Paso de ejemplo. Los pasos podr&aacute;n llevar debajo un panel con los par&aacute;metros exactos que hay que rellenar.</p></li>
-            <li><p>Paso de ejemplo. Una o dos l&iacute;neas, con los nombres de los men&uacute;s resaltados.</p></li>
-            <li><p>Paso de ejemplo. Aqu&iacute; entrar&aacute;n el usuario y la contrase&ntilde;a de IDEA.</p></li>
-            <li><p>Paso de ejemplo. &Uacute;ltimo paso: comprobar que ya hay conexi&oacute;n.</p></li>
+          <li>
+            <div class="cont">
+              <p>Activa el wifi del equipo y pulsa el <b>icono de red</b> en la barra de arriba.</p>
+              <button type="button" class="captura"><img src="img/gx-1-icono.webp" width="215" height="39" loading="lazy" alt="Barra superior del escritorio con el icono de red señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Se despliega el menú del sistema. Entra en <b>Seleccionar red</b>.</p>
+              <button type="button" class="captura"><img src="img/gx-2-menu.webp" width="266" height="334" loading="lazy" alt="Menú del sistema desplegado con la opción Seleccionar red resaltada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Elige <code>Andared_Corporativo</code> en la lista de redes y pulsa <b>Conectar</b>.</p>
+              <button type="button" class="captura"><img src="img/gx-3-redes.webp" width="321" height="333" loading="lazy" alt="Ventana Redes Wi-Fi con Andared_Corporativo seleccionado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Se abre el panel de autenticación. Rellénalo con estos valores:</p>
+              <dl class="ajustes">
+                <div><dt>Seguridad Wi-Fi</dt><dd>WPA y WPA2 enterprise</dd></div>
+                <div><dt>Autenticación</dt><dd>TLS a través de túnel</dd></div>
+                <div><dt>Autenticación interna</dt><dd>GTC</dd></div>
+              </dl>
+              <p class="apunte">Marca la casilla <b>No se necesita ningún certificado CA</b>. Identidad anónima y Dominio se quedan vacíos.</p>
+              <button type="button" class="captura"><img src="img/gx-4-parametros.webp" width="333" height="417" loading="lazy" alt="Panel de autenticación de la red con todos los campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y pulsa <b>Conectar</b>. Si son correctos, ya puedes navegar.</p>
+            </div>
+          </li>
         </ol>
       </div>
 
       <div class="proc" data-proc="olvidar" hidden>
         <p class="pendiente">Contenido de ejemplo, todav&iacute;a sin volcar desde la gu&iacute;a.</p>
         <ol class="pasos">
-            <li><p>Paso de ejemplo. Aqu&iacute; ir&aacute; la primera indicaci&oacute;n para olvidar la red.</p></li>
-            <li><p>Paso de ejemplo. Segunda indicaci&oacute;n del procedimiento.</p></li>
-            <li><p>Paso de ejemplo. &Uacute;ltima indicaci&oacute;n.</p></li>
+            <li>
+            <div class="cont"><p>Paso de ejemplo. Aqu&iacute; ir&aacute; la primera indicaci&oacute;n para olvidar la red.</p></div>
+          </li>
+            <li>
+            <div class="cont"><p>Paso de ejemplo. Segunda indicaci&oacute;n del procedimiento.</p></div>
+          </li>
+            <li>
+            <div class="cont"><p>Paso de ejemplo. &Uacute;ltima indicaci&oacute;n.</p></div>
+          </li>
         </ol>
       </div>
 
@@ -427,6 +485,8 @@ body{margin:0;background:#0e0f1d}
     </div>
     <div class="malla" id="malla" aria-hidden="true"></div>
   </main>
+
+  <div class="lupa" id="lupa" aria-hidden="true"><img alt=""></div>
 
   <footer class="cred">
     Dise&ntilde;ado por <a href="https://elprofedelabata.es/" target="_blank" rel="noopener">el profe de la bata</a>
@@ -470,7 +530,18 @@ body{margin:0;background:#0e0f1d}
     },MEDIO);
   }
 
+  var lupa=document.getElementById('lupa'), lupaImg=lupa.firstElementChild;
+  function cierraLupa(){ lupa.classList.remove('abierta'); }
+
   raiz.addEventListener('click',function(e){
+    var cap=e.target.closest('.captura');
+    if(cap){
+      var im=cap.querySelector('img');
+      lupaImg.src=im.getAttribute('src'); lupaImg.alt=im.getAttribute('alt');
+      lupa.classList.add('abierta');
+      return;
+    }
+    if(e.target.closest('.lupa')){ cierraLupa(); return; }
     var ir=e.target.closest('[data-ir]');
     if(ir){ navega(ir.getAttribute('data-ir')); return; }
     var modo=e.target.closest('.modos button');
@@ -491,6 +562,7 @@ body{margin:0;background:#0e0f1d}
 
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape')return;
+    if(lupa.classList.contains('abierta')){ cierraLupa(); return; }
     var v=raiz.querySelector('.pantalla:not([hidden]) .volver');
     if(v) navega(v.getAttribute('data-ir'));
   });
