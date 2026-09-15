@@ -29,6 +29,7 @@ body{margin:0;background:#0e0f1d}
   --dim:#7e88b8;
   --gold:#ffcb3d;      /* HUD y aviso inferior */
   --gold-off:#544219;  /* arco de wifi todavia apagado */
+  --pad:clamp(14px,3.4vh,30px); /* relleno vertical del interior */
   --pc:#45d7ff;        /* ordenador */
   --droid:#4ce07b;     /* android */
   --pome:#ff6b9d;      /* apple */
@@ -66,7 +67,7 @@ body{margin:0;background:#0e0f1d}
 /* ---------- zona central ---------- */
 #ar main{flex:1;min-height:0;position:relative;overflow:hidden}
 #ar .lienzo{height:100%;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;
-  padding:clamp(14px,3.4vh,30px) 16px}
+  padding:var(--pad) 16px}
 /* margin-block:auto centra si sobra sitio y no recorta por arriba si falta */
 #ar .pantalla{margin-block:auto;width:100%;display:flex;flex-direction:column;gap:clamp(16px,3.4vh,32px)}
 #ar .pantalla[hidden]{display:none}
@@ -118,6 +119,37 @@ body{margin:0;background:#0e0f1d}
 #ar .volver:hover{border-color:var(--gold);color:var(--gold)}
 #ar .volver:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--dark)}
 
+/* ---------- pantalla de procedimiento (se recorre con scroll) ---------- */
+/* en pantalla larga manda la seccion: barra fija arriba y cuerpo que desplaza por dentro */
+#ar .lienzo.fija{overflow:hidden;padding:0}
+#ar .larga{margin:0;gap:0;flex:1;min-height:0}
+#ar .larga .barra{flex:none;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--void);border-bottom:3px solid var(--line);padding:var(--pad) 16px 11px}
+#ar .cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;
+  align-items:center;gap:clamp(13px,2.4vh,20px);padding:var(--pad) 16px}
+#ar .donde{flex:1;min-width:0;font-family:"Silkscreen","Courier New",monospace;font-weight:400;
+  font-size:clamp(10px,2.5vw,13px);letter-spacing:.06em;line-height:1.45;color:var(--c);text-transform:none}
+
+#ar .modos{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+#ar .modos button{padding:10px 15px;background:var(--screen);border:3px solid var(--line);color:var(--dim);
+  font-size:clamp(10px,2.4vw,12px);letter-spacing:.08em;box-shadow:0 4px 0 0 var(--dark);
+  transition:transform .08s steps(2),box-shadow .08s steps(2),border-color .08s steps(2),color .08s steps(2)}
+#ar .modos button:hover{color:var(--text)}
+#ar .modos button:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--dark)}
+#ar .modos button[aria-pressed=true]{border-color:var(--c);color:var(--c);background:var(--inset)}
+
+#ar .proc{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2.2vh,18px)}
+#ar .proc[hidden]{display:none}
+#ar .pendiente{max-width:560px;width:100%;border:3px dashed var(--gold-off);color:var(--gold);
+  padding:10px 13px;font-size:clamp(10px,2.3vw,12px);letter-spacing:.05em;line-height:1.7;text-align:center}
+#ar .pasos{list-style:none;counter-reset:paso;margin:0;padding:0;width:100%;max-width:560px;
+  display:grid;gap:clamp(10px,1.8vh,15px)}
+#ar .pasos li{counter-increment:paso;display:grid;grid-template-columns:auto minmax(0,1fr);gap:13px;align-items:start;
+  background:var(--screen);border:3px solid var(--line);padding:13px 15px;box-shadow:0 4px 0 0 var(--dark)}
+#ar .pasos li::before{content:counter(paso);width:26px;height:26px;background:var(--c);color:var(--void);
+  font-family:"Press Start 2P","Courier New",monospace;font-size:10px;display:grid;place-items:center}
+#ar .pasos p{font-size:clamp(11.5px,2.5vw,13.5px);line-height:1.8}
+
 /* ---------- barrido en mosaico entre pantallas ---------- */
 #ar .malla{position:absolute;inset:0;z-index:5;pointer-events:none;visibility:hidden;display:grid;
   grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(8,1fr)}
@@ -154,7 +186,7 @@ body{margin:0;background:#0e0f1d}
 @media (max-width:660px){#ar .g4,#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}}
 /* pantallas bajas: se aprieta todo para no tener que desplazar */
 @media (max-height:700px){
-  #ar .lienzo{padding-block:12px}
+  #ar{--pad:12px}
   #ar .pantalla{gap:14px}
   #ar .zona{gap:12px}
   #ar h1{font-size:clamp(13px,3.6vw,19px)}
@@ -164,7 +196,7 @@ body{margin:0;background:#0e0f1d}
 }
 /* pantallas muy bajas (movil apaisado): las aclaraciones ceden el sitio */
 @media (max-height:640px){
-  #ar .lienzo{padding-block:9px}
+  #ar{--pad:9px}
   #ar .zona{gap:10px}
   #ar .g6 .meta{display:none}
 }
@@ -303,7 +335,7 @@ body{margin:0;background:#0e0f1d}
       <div class="zona">
         <div class="grid g6">
 
-        <button type="button" class="card c1">
+        <button type="button" class="card c1" data-ir="guadalinex">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="6" y="1" width="4" height="1"/><rect class="p1" x="5" y="2" width="6" height="1"/><rect class="p1" x="5" y="3" width="6" height="1"/><rect class="p1" x="5" y="4" width="6" height="1"/><rect class="p1" x="4" y="5" width="8" height="1"/><rect class="p1" x="3" y="6" width="10" height="1"/><rect class="p1" x="3" y="7" width="10" height="1"/><rect class="p1" x="3" y="8" width="10" height="1"/><rect class="p1" x="3" y="9" width="10" height="1"/><rect class="p1" x="3" y="10" width="10" height="1"/><rect class="p1" x="4" y="11" width="8" height="1"/><rect class="p1" x="4" y="12" width="8" height="1"/><rect class="p4" x="6" y="7" width="4" height="1"/><rect class="p4" x="5" y="8" width="6" height="1"/><rect class="p4" x="5" y="9" width="6" height="1"/><rect class="p4" x="5" y="10" width="6" height="1"/><rect class="p4" x="6" y="11" width="4" height="1"/><rect class="p2" x="6" y="3" width="1" height="1"/><rect class="p2" x="9" y="3" width="1" height="1"/><rect class="p4" x="7" y="4" width="2" height="1"/><rect class="p4" x="3" y="13" width="3" height="1"/><rect class="p4" x="10" y="13" width="3" height="1"/></svg>
           </span>
@@ -354,6 +386,44 @@ body{margin:0;background:#0e0f1d}
       </div>
     </section>
 
+    <section class="pantalla larga c1" data-p="guadalinex" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="ordenador"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Guadalinex EDU / EducaAndOS</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qu&eacute; quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <p class="pendiente">Contenido de ejemplo, todav&iacute;a sin volcar desde la gu&iacute;a.</p>
+        <ol class="pasos">
+            <li><p>Paso de ejemplo. Aqu&iacute; ir&aacute; la primera indicaci&oacute;n del procedimiento de conexi&oacute;n.</p></li>
+            <li><p>Paso de ejemplo. Los pasos podr&aacute;n llevar debajo un panel con los par&aacute;metros exactos que hay que rellenar.</p></li>
+            <li><p>Paso de ejemplo. Una o dos l&iacute;neas, con los nombres de los men&uacute;s resaltados.</p></li>
+            <li><p>Paso de ejemplo. Aqu&iacute; entrar&aacute;n el usuario y la contrase&ntilde;a de IDEA.</p></li>
+            <li><p>Paso de ejemplo. &Uacute;ltimo paso: comprobar que ya hay conexi&oacute;n.</p></li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="pendiente">Contenido de ejemplo, todav&iacute;a sin volcar desde la gu&iacute;a.</p>
+        <ol class="pasos">
+            <li><p>Paso de ejemplo. Aqu&iacute; ir&aacute; la primera indicaci&oacute;n para olvidar la red.</p></li>
+            <li><p>Paso de ejemplo. Segunda indicaci&oacute;n del procedimiento.</p></li>
+            <li><p>Paso de ejemplo. &Uacute;ltima indicaci&oacute;n.</p></li>
+        </ol>
+      </div>
+
+      </div>
+
+    </section>
+
     </div>
     <div class="malla" id="malla" aria-hidden="true"></div>
   </main>
@@ -377,6 +447,11 @@ body{margin:0;background:#0e0f1d}
     malla.appendChild(i);
   }
 
+  function repon(){
+    var l=raiz.querySelector('.lienzo'); if(l) l.scrollTop=0;
+    var c=raiz.querySelector('.pantalla:not([hidden]) .cuerpo'); if(c) c.scrollTop=0;
+  }
+
   function navega(destino){
     if(ocupado||!destino)return;
     ocupado=true;
@@ -385,8 +460,11 @@ body{margin:0;background:#0e0f1d}
       var ps=raiz.querySelectorAll('.pantalla');
       for(var k=0;k<ps.length;k++) ps[k].hidden = ps[k].getAttribute('data-p')!==destino;
       var activa=raiz.querySelector('.pantalla:not([hidden])');
+      var l=raiz.querySelector('.lienzo');
+      // en pantalla larga desplaza el cuerpo, no el lienzo
+      if(l) l.classList.toggle('fija', !!(activa && activa.className.indexOf('larga')>=0));
       if(activa) activa.focus();
-      window.scrollTo(0,0);
+      repon();
       malla.className='malla abre';
       setTimeout(function(){ malla.className='malla'; ocupado=false; },MEDIO);
     },MEDIO);
@@ -395,6 +473,16 @@ body{margin:0;background:#0e0f1d}
   raiz.addEventListener('click',function(e){
     var ir=e.target.closest('[data-ir]');
     if(ir){ navega(ir.getAttribute('data-ir')); return; }
+    var modo=e.target.closest('.modos button');
+    if(modo){
+      var sec=modo.closest('.pantalla'), cual=modo.getAttribute('data-modo');
+      var bs=sec.querySelectorAll('.modos button');
+      for(var i=0;i<bs.length;i++) bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-modo')===cual);
+      var ps=sec.querySelectorAll('[data-proc]');
+      for(var j=0;j<ps.length;j++) ps[j].hidden = ps[j].getAttribute('data-proc')!==cual;
+      repon();
+      return;
+    }
     var ficha=e.target.closest('.card');
     if(ficha){ // todavia no tiene pantalla: se niega
       ficha.classList.remove('no'); void ficha.offsetWidth; ficha.classList.add('no');
