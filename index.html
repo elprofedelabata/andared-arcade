@@ -395,7 +395,7 @@ body{margin:0;background:#0e0f1d}
           <span class="label">Windows 10</span>
         </button>
 
-        <button type="button" class="card c1">
+        <button type="button" class="card c1" data-ir="win11">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="5" y="10" width="1" height="1"/><rect class="p1" x="4" y="11" width="2" height="1"/><rect class="p1" x="5" y="12" width="1" height="1"/><rect class="p1" x="5" y="13" width="1" height="1"/><rect class="p1" x="4" y="14" width="3" height="1"/><rect class="p1" x="9" y="10" width="1" height="1"/><rect class="p1" x="8" y="11" width="2" height="1"/><rect class="p1" x="9" y="12" width="1" height="1"/><rect class="p1" x="9" y="13" width="1" height="1"/><rect class="p1" x="8" y="14" width="3" height="1"/></svg>
           </span>
@@ -783,6 +783,95 @@ body{margin:0;background:#0e0f1d}
             </div>
           </li>
         </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c1" data-p="win11" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="ordenador"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Windows 11</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Pulsa el <b>icono de wifi</b> de la barra de tareas y luego la <b>flecha ›</b> que tiene al lado.</p>
+              <button type="button" class="captura"><img src="img/w11-1-panel.webp" width="446" height="320" loading="lazy" alt="Panel de configuración rápida de Windows 11 con la flecha del icono de wifi señalada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Abajo del todo, entra en <b>Más opciones de configuración Wi-Fi</b>.</p>
+              <button type="button" class="captura"><img src="img/w11-2-mas-opciones.webp" width="296" height="333" loading="lazy" alt="Lista de redes con Más opciones de configuración Wi-Fi señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Entra en <b>Administrar redes conocidas</b>.</p>
+              <button type="button" class="captura"><img src="img/w11-3-redes-conocidas.webp" width="635" height="294" loading="lazy" alt="Ajustes de Red e Internet con Administrar redes conocidas señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Pulsa <b>Agregar red</b>.</p>
+              <button type="button" class="captura"><img src="img/w11-4-agregar-red.webp" width="648" height="300" loading="lazy" alt="Pantalla de redes conocidas con el botón Agregar red señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Rellena la ficha de la red nueva y pulsa <b>Guardar</b>.</p>
+              <dl class="ajustes">
+                <div><dt>Nombre de red</dt><dd>Andared_Corporativo</dd></div>
+                <div><dt>Tipo de seguridad</dt><dd>AES WPA2-Enterprise</dd></div>
+                <div><dt>Método EAP</dt><dd>EAP-TTLS</dd></div>
+                <div><dt>Método de autenticación</dt><dd>Contraseña no cifrada (PAP)</dd></div>
+              </dl>
+              <p class="apunte">Deja <b>Tu identificador privado</b> y <b>Servidores de confianza</b> tal y como vienen.</p>
+              <button type="button" class="captura"><img src="img/w11-5-formulario.webp" width="353" height="428" loading="lazy" alt="Formulario Agregar una nueva red con los cuatro campos señalados"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Vuelve al icono de wifi y elige <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/w11-6-elegir-red.webp" width="368" height="396" loading="lazy" alt="Lista de redes con Andared_Corporativo señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y pulsa <b>Aceptar</b>.</p>
+              <button type="button" class="captura"><img src="img/w11-7-credenciales.webp" width="470" height="579" loading="lazy" alt="Ventana Seguridad de Windows pidiendo usuario y contraseña"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Saldrá un aviso preguntando si sigues conectando. Pulsa <b>Conectar</b>.</p>
+              <button type="button" class="captura"><img src="img/w11-8-certificado.webp" width="368" height="338" loading="lazy" alt="Aviso de Windows preguntando si seguir conectando, con el botón Conectar"></button>
+            </div>
+          </li>
+        </ol>
+        <div class="ojo izq">Si aun así no conecta, revisa esto uno a uno:
+          <ul>
+            <li>Que el equipo tenga la fecha y la hora correctas.</li>
+            <li>Que Windows esté actualizado.</li>
+            <li>Que el firewall esté desactivado.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="ojo">Todavía sin volcar desde la guía.</p>
       </div>
 
       </div>
