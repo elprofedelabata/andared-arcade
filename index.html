@@ -377,7 +377,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">Sin soporte oficial</span>
         </button>
 
-        <button type="button" class="card c1">
+        <button type="button" class="card c1" data-ir="win8">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="6" y="10" width="3" height="1"/><rect class="p1" x="6" y="11" width="1" height="1"/><rect class="p1" x="8" y="11" width="1" height="1"/><rect class="p1" x="6" y="12" width="3" height="1"/><rect class="p1" x="6" y="13" width="1" height="1"/><rect class="p1" x="8" y="13" width="1" height="1"/><rect class="p1" x="6" y="14" width="3" height="1"/></svg>
           </span>
@@ -601,6 +601,87 @@ body{margin:0;background:#0e0f1d}
             </div>
           </li>
         </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c1" data-p="win8" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="ordenador"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Windows 8 y 8.1</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <p class="ojo">Vale igual para Windows 8 y para 8.1: el método es el mismo. La red hay que crearla a mano, porque si dejas que se añada sola Windows no te deja cambiar los parámetros de seguridad.</p>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Ve a <b>Panel de control</b> › <b>Redes e Internet</b> › <b>Centro de redes y recursos compartidos</b> y pulsa <b>Configurar una nueva conexión o red</b>.</p>
+              <button type="button" class="captura"><img src="img/w8-1-centro-redes.webp" width="855" height="598" loading="lazy" alt="Centro de redes y recursos compartidos con la opción Configurar una nueva conexión o red señalada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Elige <b>Conectarse manualmente a una red inalámbrica</b> y pulsa <b>Siguiente</b>.</p>
+              <button type="button" class="captura"><img src="img/w8-2-manualmente.webp" width="632" height="465" loading="lazy" alt="Cuadro Elegir una opción de conexión con Conectarse manualmente a una red inalámbrica señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Rellena los datos de la red y pulsa <b>Siguiente</b>.</p>
+              <dl class="ajustes">
+                <div><dt>Nombre de la red</dt><dd>Andared_Corporativo</dd></div>
+                <div><dt>Tipo de seguridad</dt><dd>WPA2-Enterprise</dd></div>
+                <div><dt>Tipo de cifrado</dt><dd>AES</dd></div>
+              </dl>
+              <button type="button" class="captura"><img src="img/w8-3-datos.webp" width="630" height="467" loading="lazy" alt="Formulario de red inalámbrica con los tres campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Pulsa <b>Cambiar la configuración de conexión</b>.</p>
+              <button type="button" class="captura"><img src="img/w8-4-cambiar-config.webp" width="631" height="467" loading="lazy" alt="Aviso de red agregada correctamente con la opción Cambiar la configuración de conexión señalada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En la pestaña <b>Seguridad</b>, elige <b>Microsoft: EAP-TTLS</b> como método de autenticación de red y pulsa <b>Aceptar</b>.</p>
+              <button type="button" class="captura"><img src="img/w8-5-eap-ttls.webp" width="686" height="590" loading="lazy" alt="Propiedades de la red inalámbrica con Microsoft: EAP-TTLS seleccionado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Windows 8 ofrece más métodos en la lista que 8.1, pero el que hay que elegir es el mismo en los dos.</p>
+              <button type="button" class="captura"><img src="img/w8-6-lista-metodos.webp" width="866" height="650" loading="lazy" alt="Lista desplegada de métodos de autenticación en Windows 8"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Conecta desde el botón de <b>conexiones inalámbricas</b> y escribe tu usuario y contraseña de IDEA.</p>
+              <button type="button" class="captura"><img src="img/w8-7-usuario.webp" width="1095" height="718" loading="lazy" alt="Panel Redes de Windows 8 pidiendo usuario y contraseña"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Acepta el certificado pulsando <b>Conectar</b>. Si las credenciales son correctas, ya puedes navegar.</p>
+              <button type="button" class="captura"><img src="img/w8-8-certificado.webp" width="1084" height="730" loading="lazy" alt="Aviso de Windows preguntando si desea continuar conectándose, con el botón Conectar"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="ojo">Todavía sin volcar desde la guía.</p>
       </div>
 
       </div>
