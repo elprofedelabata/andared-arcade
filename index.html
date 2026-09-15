@@ -140,6 +140,9 @@ body{margin:0;background:#0e0f1d}
 
 #ar .proc{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2.2vh,18px)}
 #ar .proc[hidden]{display:none}
+#ar .ojo.izq{text-align:left}
+#ar .ojo ul{margin:7px 0 0;padding-left:17px}
+#ar .ojo li{margin-top:5px}
 #ar .ojo{max-width:560px;width:100%;border:3px dashed var(--gold-off);color:var(--gold);
   padding:10px 13px;font-size:clamp(10px,2.3vw,12px);letter-spacing:.05em;line-height:1.7;text-align:center}
 #ar .pasos{list-style:none;counter-reset:paso;margin:0;padding:0;width:100%;max-width:560px;
@@ -385,7 +388,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">Incluye 8.1</span>
         </button>
 
-        <button type="button" class="card c1">
+        <button type="button" class="card c1" data-ir="win10">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="5" y="10" width="1" height="1"/><rect class="p1" x="4" y="11" width="2" height="1"/><rect class="p1" x="5" y="12" width="1" height="1"/><rect class="p1" x="5" y="13" width="1" height="1"/><rect class="p1" x="4" y="14" width="3" height="1"/><rect class="p1" x="8" y="10" width="3" height="1"/><rect class="p1" x="8" y="11" width="1" height="1"/><rect class="p1" x="10" y="11" width="1" height="1"/><rect class="p1" x="8" y="12" width="1" height="1"/><rect class="p1" x="10" y="12" width="1" height="1"/><rect class="p1" x="8" y="13" width="1" height="1"/><rect class="p1" x="10" y="13" width="1" height="1"/><rect class="p1" x="8" y="14" width="3" height="1"/></svg>
           </span>
@@ -696,6 +699,76 @@ body{margin:0;background:#0e0f1d}
             </div>
           </li>
         </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c1" data-p="win10" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="ordenador"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Windows 10</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Pulsa el <b>icono de wifi</b> de la barra de tareas y abre <b>Configuración de red e Internet</b>.</p>
+              <button type="button" class="captura"><img src="img/w10-1-config-red.webp" width="780" height="914" loading="lazy" alt="Panel de redes de Windows 10 con Configuración de red e Internet señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Ve a <b>Wi-Fi</b> › <b>Administrar redes conocidas</b> y pulsa <b>Agregar una nueva red</b>.</p>
+              <button type="button" class="captura"><img src="img/w10-2-redes-conocidas.webp" width="629" height="520" loading="lazy" alt="Ajustes de Wi-Fi con la pestaña Wi-Fi y Administrar redes conocidas señaladas"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Rellena la ficha de la red nueva y pulsa <b>Guardar</b>.</p>
+              <dl class="ajustes">
+                <div><dt>Nombre de red</dt><dd>Andared_Corporativo</dd></div>
+                <div><dt>Tipo de seguridad</dt><dd>AES WPA2-Enterprise</dd></div>
+                <div><dt>Método EAP</dt><dd>EAP-TTLS</dd></div>
+                <div><dt>Método de autenticación</dt><dd>Contraseña no cifrada (PAP)</dd></div>
+              </dl>
+              <button type="button" class="captura"><img src="img/w10-3-agregar.webp" width="403" height="583" loading="lazy" alt="Formulario Agregar una nueva red con los cuatro campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Vuelve al <b>icono de wifi</b> de la barra de tareas.</p>
+              <button type="button" class="captura"><img src="img/w10-4-icono.webp" width="412" height="43" loading="lazy" alt="Barra de tareas de Windows 10 con el icono de wifi señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Elige <code>Andared_Corporativo</code>, escribe tu usuario y contraseña de IDEA y pulsa <b>Aceptar</b>.</p>
+              <button type="button" class="captura"><img src="img/w10-5-credenciales.webp" width="462" height="420" loading="lazy" alt="Ventana Seguridad de Windows pidiendo usuario y contraseña"></button>
+            </div>
+          </li>
+        </ol>
+        <div class="ojo izq">Si aun así no conecta, revisa esto uno a uno:
+          <ul>
+            <li>Que el equipo tenga la fecha y la hora correctas.</li>
+            <li>Que Windows esté actualizado.</li>
+            <li>Que el firewall esté desactivado.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="ojo">Todavía sin volcar desde la guía.</p>
       </div>
 
       </div>
