@@ -42,8 +42,8 @@ body{margin:0;background:#0e0f1d}
 
 /* ---------- HUD superior ---------- */
 #ar .hud{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px;border-bottom:4px solid var(--line);flex-wrap:wrap}
-#ar .hud svg{width:24px;height:24px;flex:none;fill:var(--gold)}
-#ar .hud b{font-size:clamp(10px,2.7vw,13px);line-height:1.5;letter-spacing:.07em;font-weight:400;color:var(--gold)}
+#ar .hud svg{width:clamp(28px,7.5vw,34px);height:clamp(28px,7.5vw,34px);flex:none;fill:var(--gold)}
+#ar .hud b{flex:1;min-width:0;font-size:clamp(12.5px,3.5vw,16px);line-height:1.5;letter-spacing:.06em;font-weight:400;color:var(--gold)}
 /* el wifi va encendiendo arcos de dentro a fuera, como buscando senal */
 #ar .hud g{animation-duration:1.8s;animation-timing-function:steps(1);animation-iteration-count:infinite}
 #ar .hud .w1{animation-name:w1}
