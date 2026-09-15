@@ -140,7 +140,7 @@ body{margin:0;background:#0e0f1d}
 
 #ar .proc{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2.2vh,18px)}
 #ar .proc[hidden]{display:none}
-#ar .pendiente{max-width:560px;width:100%;border:3px dashed var(--gold-off);color:var(--gold);
+#ar .ojo{max-width:560px;width:100%;border:3px dashed var(--gold-off);color:var(--gold);
   padding:10px 13px;font-size:clamp(10px,2.3vw,12px);letter-spacing:.05em;line-height:1.7;text-align:center}
 #ar .pasos{list-style:none;counter-reset:paso;margin:0;padding:0;width:100%;max-width:560px;
   display:grid;gap:clamp(10px,1.8vh,15px)}
@@ -154,6 +154,9 @@ body{margin:0;background:#0e0f1d}
   -webkit-box-decoration-break:clone;box-decoration-break:clone}
 #ar .pasos code{font-family:inherit;color:var(--c);background:var(--inset);border:2px solid var(--line);padding:0 4px}
 #ar .apunte{font-size:11.5px;line-height:1.75;color:var(--dim)}
+#ar .pasos a{color:var(--gold);text-decoration:none;border-bottom:2px solid var(--gold-off);
+  padding:0 2px;word-break:break-all}
+#ar .pasos a:hover{background:var(--gold);color:var(--void);border-bottom-color:var(--gold)}
 
 /* la captura va en un bisel: una pantalla dentro de la maquina */
 #ar .captura{align-self:flex-start;width:auto;max-width:100%;padding:6px;background:var(--inset);
@@ -366,7 +369,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">EDU y EducaAndOS</span>
         </button>
 
-        <button type="button" class="card c1">
+        <button type="button" class="card c1" data-ir="win7">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="6" y="10" width="3" height="1"/><rect class="p1" x="8" y="11" width="1" height="1"/><rect class="p1" x="7" y="12" width="1" height="1"/><rect class="p1" x="7" y="13" width="1" height="1"/><rect class="p1" x="7" y="14" width="1" height="1"/></svg>
           </span>
@@ -491,6 +494,87 @@ body{margin:0;background:#0e0f1d}
             </div>
           </li>
         </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c1" data-p="win7" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="ordenador"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Windows 7</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <p class="ojo">Windows 7 no recibe soporte de Microsoft desde el 14 de enero de 2020, así que no se garantiza que funcione.</p>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Instala primero el complemento <b>EAP-PEAP</b>, que Windows 7 no trae de serie:<br><a href="https://guadalinex-edu.cica.es/wireless/EAP-PEAP.msi" target="_blank" rel="noopener">https://guadalinex-edu.cica.es/wireless/EAP-PEAP.msi</a></p>
+              <p class="apunte">La descarga sale de <code>guadalinex-edu.cica.es</code>, el servidor de la propia Consejería.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>La red hay que crearla <b>a mano</b>: si dejas que se añada sola, Windows no te deja tocar los parámetros de seguridad. Ve a <b>Panel de control</b> › <b>Redes e Internet</b> › <b>Centro de redes y recursos compartidos</b> › <b>Configurar una nueva conexión o red</b> › <b>Conectarse manualmente a una red inalámbrica</b>.</p>
+              <button type="button" class="captura"><img src="img/w7-1-crear-red.webp" width="1100" height="538" loading="lazy" alt="Centro de redes y recursos compartidos con las dos opciones señaladas"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Rellena los datos de la red y pulsa <b>Siguiente</b>.</p>
+              <dl class="ajustes">
+                <div><dt>Nombre de la red</dt><dd>Andared_Corporativo</dd></div>
+                <div><dt>Tipo de seguridad</dt><dd>WPA2-Enterprise</dd></div>
+                <div><dt>Tipo de cifrado</dt><dd>AES</dd></div>
+              </dl>
+              <button type="button" class="captura"><img src="img/w7-2-datos.webp" width="904" height="567" loading="lazy" alt="Formulario de red inalámbrica con los tres campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Pulsa <b>Cambiar la configuración de conexión</b>.</p>
+              <button type="button" class="captura"><img src="img/w7-3-cambiar-config.webp" width="860" height="512" loading="lazy" alt="Aviso de red agregada correctamente con la opción Cambiar la configuración de conexión señalada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En la pestaña <b>Seguridad</b>, elige <b>Cisco:PEAP</b> como método de autenticación de red y pulsa <b>Configuración</b>.</p>
+              <button type="button" class="captura"><img src="img/w7-4-cisco-peap.webp" width="1063" height="517" loading="lazy" alt="Propiedades de la red inalámbrica con Cisco:PEAP seleccionado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En la pestaña <b>Connection</b>, <b>desmarca</b> la casilla <b>Use anonymous outer identity</b>.</p>
+              <button type="button" class="captura"><img src="img/w7-5-connection.webp" width="849" height="521" loading="lazy" alt="Ventana PEAP Properties, pestaña Connection, con la casilla Use anonymous outer identity desmarcada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En la pestaña <b>User Credentials</b>, marca <b>Prompt automatically for username and password</b> y pulsa <b>Aceptar</b>.</p>
+              <button type="button" class="captura"><img src="img/w7-6-credentials.webp" width="816" height="583" loading="lazy" alt="Ventana PEAP Properties, pestaña User Credentials, con la opción Prompt automatically marcada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Conéctate a la red. Cuando salga la ventana <b>PEAP</b>, escribe tu usuario y contraseña de IDEA y pulsa <b>OK</b>.</p>
+              <button type="button" class="captura"><img src="img/w7-7-usuario.webp" width="597" height="418" loading="lazy" alt="Ventana PEAP pidiendo usuario y contraseña"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="ojo">Todavía sin volcar desde la guía.</p>
       </div>
 
       </div>
