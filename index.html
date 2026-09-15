@@ -73,8 +73,9 @@ body{margin:0;background:#0e0f1d}
   line-height:1.75;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;max-width:16ch}
 
 /* ---------- fichas de dispositivo ---------- */
-#ar .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:clamp(12px,2.5vw,18px);
+#ar .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(132px,100%),1fr));gap:clamp(12px,2.5vw,18px);
   width:100%;max-width:700px;margin:0 auto}
+#ar .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
 #ar .g6{grid-template-columns:repeat(3,minmax(0,1fr));max-width:560px}
 #ar .card{display:grid;align-content:start;justify-items:center;gap:10px;padding:16px 10px 14px;background:var(--screen);
   border:4px solid var(--line);box-shadow:0 7px 0 0 var(--dark);
@@ -120,7 +121,7 @@ body{margin:0;background:#0e0f1d}
 @keyframes abrir{to{transform:scale(0)}}
 
 /* ---------- aviso bajo las fichas ---------- */
-#ar .zona{display:grid;justify-items:center;gap:clamp(16px,3.4vh,26px);width:100%}
+#ar .zona{display:flex;flex-direction:column;align-items:center;gap:clamp(16px,3.4vh,26px);width:100%;min-width:0}
 #ar .aviso{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;
   font-size:clamp(11px,2.6vw,13px);letter-spacing:.1em;line-height:1.6;color:var(--gold);
   animation:impaciencia 4.2s steps(1) infinite}
@@ -142,7 +143,7 @@ body{margin:0;background:#0e0f1d}
 #ar .cred a{color:var(--gold);text-decoration:none;border-bottom:2px solid var(--gold-off);padding:1px 3px}
 #ar .cred a:hover{background:var(--gold);color:var(--void);border-bottom-color:var(--gold)}
 @media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}#ar .malla{display:none}}
-@media (max-width:620px){#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}}
+@media (max-width:660px){#ar .g4,#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}}
 @media (max-width:600px){#ar .pdf .larga{display:none}}
 @media (max-width:360px){#ar .meta{display:none}}
 </style>
@@ -191,7 +192,7 @@ body{margin:0;background:#0e0f1d}
     </div>
 
     <div class="zona">
-      <div class="grid">
+      <div class="grid g4">
 
         <button type="button" class="card c1" data-ir="ordenador">
           <span class="slot">
