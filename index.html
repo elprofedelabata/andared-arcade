@@ -64,8 +64,10 @@ body{margin:0;background:#0e0f1d}
 #ar .pdf:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--dark)}
 
 /* ---------- zona central ---------- */
-#ar main{flex:1;display:flex;flex-direction:column;
-  justify-content:center;gap:clamp(20px,5vh,40px);padding:clamp(20px,5vh,40px) 16px}
+#ar main{flex:1;display:flex;flex-direction:column;padding:clamp(20px,5vh,40px) 16px}
+#ar .pantalla{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,5vh,40px)}
+#ar .pantalla[hidden]{display:none}
+#ar .pantalla:focus{outline:none}
 #ar .ask{text-align:center;display:grid;justify-items:center}
 #ar h1{font-family:"Press Start 2P","Courier New",monospace;font-size:clamp(14px,4.2vw,24px);
   line-height:1.75;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;max-width:16ch}
@@ -73,7 +75,8 @@ body{margin:0;background:#0e0f1d}
 /* ---------- fichas de dispositivo ---------- */
 #ar .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:clamp(12px,2.5vw,18px);
   width:100%;max-width:700px;margin:0 auto}
-#ar .card{display:grid;justify-items:center;gap:10px;padding:16px 10px 14px;background:var(--screen);
+#ar .g6{grid-template-columns:repeat(3,minmax(0,1fr));max-width:560px}
+#ar .card{display:grid;align-content:start;justify-items:center;gap:10px;padding:16px 10px 14px;background:var(--screen);
   border:4px solid var(--line);box-shadow:0 7px 0 0 var(--dark);
   transition:transform .08s steps(2),box-shadow .08s steps(2),border-color .08s steps(2)}
 #ar .card:hover{border-color:var(--c);transform:translateY(-3px);box-shadow:0 10px 0 0 var(--dark)}
@@ -82,6 +85,7 @@ body{margin:0;background:#0e0f1d}
   display:grid;place-items:center;padding:9px}
 #ar .slot svg{width:100%;height:auto;display:block}
 #ar .p1{fill:var(--c)}
+#ar .p4{fill:var(--text)}
 #ar .p2{fill:var(--inset)}
 #ar .p3{fill:var(--dark)}
 #ar .label{font-family:"Press Start 2P","Courier New",monospace;font-size:clamp(9px,1.9vw,11px);
@@ -92,6 +96,28 @@ body{margin:0;background:#0e0f1d}
 #ar .c2{--c:var(--droid)}
 #ar .c3{--c:var(--pome)}
 #ar .c4{--c:var(--misc)}
+/* ficha que aun no lleva a ninguna parte: se niega con un temblor */
+#ar .card.no{animation:niega .3s steps(1)}
+@keyframes niega{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+
+/* ---------- volver ---------- */
+#ar .volver{display:flex;align-items:center;gap:9px;padding:9px 15px;background:var(--screen);
+  border:3px solid var(--line);color:var(--text);font-size:clamp(11px,2.6vw,13px);letter-spacing:.09em;
+  box-shadow:0 4px 0 0 var(--dark);
+  transition:transform .08s steps(2),box-shadow .08s steps(2),border-color .08s steps(2),color .08s steps(2)}
+#ar .volver svg{width:11px;height:11px;flex:none;fill:currentColor}
+#ar .volver:hover{border-color:var(--gold);color:var(--gold)}
+#ar .volver:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--dark)}
+
+/* ---------- barrido en mosaico entre pantallas ---------- */
+#ar .malla{position:fixed;inset:0;z-index:50;pointer-events:none;visibility:hidden;display:grid;
+  grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(8,1fr)}
+#ar .malla i{background:var(--void);transform:scale(0)}
+#ar .malla.tapa,#ar .malla.abre{visibility:visible}
+#ar .malla.tapa i{animation:tapar .1s steps(2) forwards}
+#ar .malla.abre i{transform:scale(1);animation:abrir .1s steps(2) forwards}
+@keyframes tapar{to{transform:scale(1)}}
+@keyframes abrir{to{transform:scale(0)}}
 
 /* ---------- aviso bajo las fichas ---------- */
 #ar .zona{display:grid;justify-items:center;gap:clamp(16px,3.4vh,26px);width:100%}
@@ -115,7 +141,8 @@ body{margin:0;background:#0e0f1d}
   text-align:center;font-size:clamp(10px,2.4vw,12px);letter-spacing:.07em;line-height:1.8;color:var(--dim)}
 #ar .cred a{color:var(--gold);text-decoration:none;border-bottom:2px solid var(--gold-off);padding:1px 3px}
 #ar .cred a:hover{background:var(--gold);color:var(--void);border-bottom-color:var(--gold)}
-@media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}#ar .malla{display:none}}
+@media (max-width:620px){#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}}
 @media (max-width:600px){#ar .pdf .larga{display:none}}
 @media (max-width:360px){#ar .meta{display:none}}
 </style>
@@ -157,6 +184,8 @@ body{margin:0;background:#0e0f1d}
   </div>
 
   <main>
+
+    <section class="pantalla" data-p="inicio" tabindex="-1">
     <div class="ask">
       <h1>Elige tu dispositivo</h1>
     </div>
@@ -164,7 +193,7 @@ body{margin:0;background:#0e0f1d}
     <div class="zona">
       <div class="grid">
 
-        <button type="button" class="card c1">
+        <button type="button" class="card c1" data-ir="ordenador">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
               <rect class="p1" x="1" y="2" width="14" height="10"/>
@@ -239,13 +268,119 @@ body{margin:0;background:#0e0f1d}
       </div>
       <p class="aviso"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="2" height="1"/><rect x="2" y="3" width="4" height="1"/><rect x="1" y="4" width="6" height="1"/><rect x="0" y="5" width="8" height="1"/></svg>Pulsa una ficha para empezar<svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="2" height="1"/><rect x="2" y="3" width="4" height="1"/><rect x="1" y="4" width="6" height="1"/><rect x="0" y="5" width="8" height="1"/></svg></p>
     </div>
+    </section>
+
+    <section class="pantalla" data-p="ordenador" tabindex="-1" hidden>
+    <div class="ask">
+      <h1>Elige tu sistema</h1>
+    </div>
+      <div class="zona">
+        <div class="grid g6">
+
+        <button type="button" class="card c1">
+          <span class="slot">
+            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="6" y="1" width="4" height="1"/><rect class="p1" x="5" y="2" width="6" height="1"/><rect class="p1" x="5" y="3" width="6" height="1"/><rect class="p1" x="5" y="4" width="6" height="1"/><rect class="p1" x="4" y="5" width="8" height="1"/><rect class="p1" x="3" y="6" width="10" height="1"/><rect class="p1" x="3" y="7" width="10" height="1"/><rect class="p1" x="3" y="8" width="10" height="1"/><rect class="p1" x="3" y="9" width="10" height="1"/><rect class="p1" x="3" y="10" width="10" height="1"/><rect class="p1" x="4" y="11" width="8" height="1"/><rect class="p1" x="4" y="12" width="8" height="1"/><rect class="p4" x="6" y="7" width="4" height="1"/><rect class="p4" x="5" y="8" width="6" height="1"/><rect class="p4" x="5" y="9" width="6" height="1"/><rect class="p4" x="5" y="10" width="6" height="1"/><rect class="p4" x="6" y="11" width="4" height="1"/><rect class="p2" x="6" y="3" width="1" height="1"/><rect class="p2" x="9" y="3" width="1" height="1"/><rect class="p4" x="7" y="4" width="2" height="1"/><rect class="p4" x="3" y="13" width="3" height="1"/><rect class="p4" x="10" y="13" width="3" height="1"/></svg>
+          </span>
+          <span class="label">Guadalinex</span>
+          <span class="meta">EDU y EducaAndOS</span>
+        </button>
+
+        <button type="button" class="card c1">
+          <span class="slot">
+            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="6" y="10" width="3" height="1"/><rect class="p1" x="8" y="11" width="1" height="1"/><rect class="p1" x="7" y="12" width="1" height="1"/><rect class="p1" x="7" y="13" width="1" height="1"/><rect class="p1" x="7" y="14" width="1" height="1"/></svg>
+          </span>
+          <span class="label">Windows 7</span>
+          <span class="meta">Sin soporte oficial</span>
+        </button>
+
+        <button type="button" class="card c1">
+          <span class="slot">
+            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="6" y="10" width="3" height="1"/><rect class="p1" x="6" y="11" width="1" height="1"/><rect class="p1" x="8" y="11" width="1" height="1"/><rect class="p1" x="6" y="12" width="3" height="1"/><rect class="p1" x="6" y="13" width="1" height="1"/><rect class="p1" x="8" y="13" width="1" height="1"/><rect class="p1" x="6" y="14" width="3" height="1"/></svg>
+          </span>
+          <span class="label">Windows 8</span>
+          <span class="meta">Incluye 8.1</span>
+        </button>
+
+        <button type="button" class="card c1">
+          <span class="slot">
+            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="5" y="10" width="1" height="1"/><rect class="p1" x="4" y="11" width="2" height="1"/><rect class="p1" x="5" y="12" width="1" height="1"/><rect class="p1" x="5" y="13" width="1" height="1"/><rect class="p1" x="4" y="14" width="3" height="1"/><rect class="p1" x="8" y="10" width="3" height="1"/><rect class="p1" x="8" y="11" width="1" height="1"/><rect class="p1" x="10" y="11" width="1" height="1"/><rect class="p1" x="8" y="12" width="1" height="1"/><rect class="p1" x="10" y="12" width="1" height="1"/><rect class="p1" x="8" y="13" width="1" height="1"/><rect class="p1" x="10" y="13" width="1" height="1"/><rect class="p1" x="8" y="14" width="3" height="1"/></svg>
+          </span>
+          <span class="label">Windows 10</span>
+        </button>
+
+        <button type="button" class="card c1">
+          <span class="slot">
+            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="4" y="1" width="3" height="3"/><rect class="p1" x="8" y="1" width="3" height="3"/><rect class="p1" x="4" y="5" width="3" height="3"/><rect class="p1" x="8" y="5" width="3" height="3"/><rect class="p1" x="5" y="10" width="1" height="1"/><rect class="p1" x="4" y="11" width="2" height="1"/><rect class="p1" x="5" y="12" width="1" height="1"/><rect class="p1" x="5" y="13" width="1" height="1"/><rect class="p1" x="4" y="14" width="3" height="1"/><rect class="p1" x="9" y="10" width="1" height="1"/><rect class="p1" x="8" y="11" width="2" height="1"/><rect class="p1" x="9" y="12" width="1" height="1"/><rect class="p1" x="9" y="13" width="1" height="1"/><rect class="p1" x="8" y="14" width="3" height="1"/></svg>
+          </span>
+          <span class="label">Windows 11</span>
+        </button>
+
+        <button type="button" class="card c1">
+          <span class="slot">
+            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="6" y="2" width="4" height="1"/><rect class="p1" x="4" y="3" width="8" height="1"/><rect class="p1" x="3" y="4" width="10" height="1"/><rect class="p1" x="3" y="5" width="10" height="1"/><rect class="p1" x="2" y="6" width="12" height="1"/><rect class="p1" x="2" y="7" width="12" height="1"/><rect class="p1" x="2" y="8" width="12" height="1"/><rect class="p1" x="2" y="9" width="12" height="1"/><rect class="p1" x="3" y="10" width="10" height="1"/><rect class="p1" x="3" y="11" width="10" height="1"/><rect class="p1" x="4" y="12" width="8" height="1"/><rect class="p1" x="6" y="13" width="4" height="1"/><rect class="p2" x="6" y="5" width="4" height="1"/><rect class="p2" x="5" y="6" width="6" height="1"/><rect class="p2" x="5" y="7" width="6" height="1"/><rect class="p2" x="5" y="8" width="6" height="1"/><rect class="p2" x="5" y="9" width="6" height="1"/><rect class="p2" x="6" y="10" width="4" height="1"/><rect class="p4" x="7" y="7" width="2" height="1"/><rect class="p4" x="7" y="8" width="2" height="1"/></svg>
+          </span>
+          <span class="label">Chrome OS</span>
+          <span class="meta">Chromebook</span>
+        </button>
+
+        </div>
+        <button type="button" class="volver" data-ir="inicio"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+      </div>
+    </section>
+
   </main>
 
   <footer class="cred">
     Dise&ntilde;ado por <a href="https://elprofedelabata.es/" target="_blank" rel="noopener">el profe de la bata</a>
   </footer>
 
+  <div class="malla" id="malla" aria-hidden="true"></div>
+
 </div>
 
+
+<script>
+(function(){
+  var raiz=document.getElementById('ar'), malla=document.getElementById('malla');
+  var COLS=12, FILAS=8, PASO=14, MEDIO=(COLS+FILAS)*PASO+70, ocupado=false;
+
+  // la malla barre en diagonal: el retardo de cada celda depende de columna+fila
+  for(var f=0;f<FILAS;f++)for(var c=0;c<COLS;c++){
+    var i=document.createElement('i');
+    i.style.animationDelay=((c+f)*PASO)+'ms';
+    malla.appendChild(i);
+  }
+
+  function navega(destino){
+    if(ocupado||!destino)return;
+    ocupado=true;
+    malla.className='malla tapa';
+    setTimeout(function(){
+      var ps=raiz.querySelectorAll('.pantalla');
+      for(var k=0;k<ps.length;k++) ps[k].hidden = ps[k].getAttribute('data-p')!==destino;
+      var activa=raiz.querySelector('.pantalla:not([hidden])');
+      if(activa) activa.focus();
+      window.scrollTo(0,0);
+      malla.className='malla abre';
+      setTimeout(function(){ malla.className='malla'; ocupado=false; },MEDIO);
+    },MEDIO);
+  }
+
+  raiz.addEventListener('click',function(e){
+    var ir=e.target.closest('[data-ir]');
+    if(ir){ navega(ir.getAttribute('data-ir')); return; }
+    var ficha=e.target.closest('.card');
+    if(ficha){ // todavia no tiene pantalla: se niega
+      ficha.classList.remove('no'); void ficha.offsetWidth; ficha.classList.add('no');
+    }
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    var v=raiz.querySelector('.pantalla:not([hidden]) .volver');
+    if(v) navega(v.getAttribute('data-ir'));
+  });
+})();
+</script>
 </body>
 </html>
