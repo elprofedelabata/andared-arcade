@@ -1889,10 +1889,10 @@ body{margin:0;background:var(--void)}
       tgl.setAttribute('aria-pressed', act);
       if(cual==='tema'){ pintaTema(act); recuerda('andared-tema', act?'claro':'oscuro'); }
       if(cual==='sonido'){ sonido=act; recuerda('andared-sonido', act?'si':'no'); }
-      suena();   // al encenderlo suena de confirmacion; al apagarlo ya no
       return;
     }
-    if(e.target.closest('button')) suena();
+    // solo suena el contenido: las barras de arriba y abajo van mudas
+    if(e.target.closest('main') && e.target.closest('button')) suena();
     var cap=e.target.closest('.captura');
     if(cap){
       var im=cap.querySelector('img');
