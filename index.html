@@ -1176,7 +1176,7 @@ body{margin:0;background:#0e0f1d}
       <div class="zona">
         <div class="grid g5">
 
-        <button type="button" class="card c4">
+        <button type="button" class="card c4" data-ir="vexia">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="2" y="2" width="12" height="9"/><rect class="p2" x="3" y="3" width="10" height="7"/><rect class="p1" x="0" y="12" width="16" height="2"/><rect class="p2" x="6" y="12" width="4" height="1"/></svg>
           </span>
@@ -1219,6 +1219,65 @@ body{margin:0;background:#0e0f1d}
         </div>
         <button type="button" class="volver" data-ir="inicio"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
       </div>
+    </section>
+
+    <section class="pantalla larga c4" data-p="vexia" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="otros"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">DDA Vexia Guadalinex EDU 2013</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Activa el wifi, pulsa el <b>icono de red</b> de la barra de arriba y haz clic en <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/vex-1-menu.webp" width="1022" height="642" loading="lazy" alt="Escritorio de Guadalinex con el menú de redes inalámbricas desplegado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Se abre el panel de autenticación. Rellénalo con estos valores:</p>
+              <dl class="ajustes">
+                <div><dt>Seguridad inalámbrica</dt><dd>WPA y WPA2 enterprise</dd></div>
+                <div><dt>Autenticación</dt><dd>EAP protegido (PEAP)</dd></div>
+                <div><dt>Certificado CA</dt><dd>(Ninguno)</dd></div>
+                <div><dt>Versión PEAP</dt><dd>Versión 1</dd></div>
+                <div><dt>Autenticación interna</dt><dd>GTC</dd></div>
+              </dl>
+              <p class="apunte">Deja <b>Identidad anónima</b> vacía y no selecciones ningún certificado.</p>
+              <button type="button" class="captura"><img src="img/vex-2-panel.webp" width="643" height="512" loading="lazy" alt="Panel de autenticación de la red con los cinco campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y pulsa <b>Conectar</b>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Saltará un aviso de que no se ha elegido ningún certificado CA. Pulsa <b>Ignorar</b>.</p>
+              <p class="apunte">Marca antes <b>No avisarme de nuevo</b> si no quieres volver a verlo cada vez.</p>
+              <button type="button" class="captura"><img src="img/vex-3-ignorar.webp" width="513" height="413" loading="lazy" alt="Aviso de que no se ha elegido certificado CA, con el botón Ignorar señalado"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="ojo">Todavía sin volcar desde la guía.</p>
+      </div>
+
+      </div>
+
     </section>
 
     </div>
