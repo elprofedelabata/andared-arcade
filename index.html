@@ -226,14 +226,14 @@ body{margin:0;background:#0e0f1d}
 #ar .cred p{flex:1 1 auto;min-width:0;text-align:center}
 
 /* mandos: de momento solo cambian de estado, no hacen nada todavia */
-#ar .mandos{flex:none;display:flex;gap:7px}
-#ar .tgl{width:30px;height:30px;flex:none;display:grid;place-items:center;padding:0;
-  background:var(--screen);border:2px solid var(--line);color:var(--dim);
-  transition:border-color .08s steps(2),color .08s steps(2),background-color .08s steps(2)}
-#ar .tgl:hover{border-color:var(--gold);color:var(--gold)}
+#ar .mandos{flex:none;display:flex;gap:6px}
+/* sueltos, sin marco ni fondo: el relleno solo esta para que el dedo tenga donde caer */
+#ar .tgl{flex:none;display:grid;place-items:center;padding:5px;background:0;border:0;
+  color:var(--dim);transition:color .08s steps(2)}
+#ar .tgl:hover{color:var(--gold)}
 #ar .tgl:active{transform:translateY(1px)}
-#ar .tgl[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:var(--inset)}
-#ar .tgl svg{width:16px;height:16px;fill:currentColor}
+#ar .tgl[aria-pressed="true"]{color:var(--gold)}
+#ar .tgl svg{width:clamp(23px,5.2vw,27px);height:clamp(23px,5.2vw,27px);fill:currentColor}
 #ar .tgl .b{display:none}
 #ar .tgl[aria-pressed="true"] .a{display:none}
 #ar .tgl[aria-pressed="true"] .b{display:block}
