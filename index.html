@@ -310,6 +310,13 @@ body{margin:0;background:var(--void)}
   #ar .g6 .meta{display:none}
 }
 @media (max-width:600px){#ar .pdf .larga{display:none}}
+/* cuando creditos y mandos no caben en una linea, el flex parte antes de
+   encoger, asi que los mandos bajan solos. Ahi se apilan centrados los dos,
+   en vez de quedar el segundo pegado a la izquierda. */
+@media (max-width:560px){
+  #ar .cred{justify-content:center;gap:9px 14px}
+  #ar .cred p{flex:0 1 auto}
+}
 @media (max-width:360px){#ar .meta{display:none}}
 </style>
 </head>
