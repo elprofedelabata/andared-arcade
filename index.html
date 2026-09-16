@@ -181,6 +181,17 @@ body{margin:0;background:#0e0f1d}
 #ar .lupa.abierta{display:flex}
 #ar .lupa img{max-width:100%;max-height:100%;border:4px solid var(--gold);background:#fff}
 
+/* ---------- plan B plegado: procedimientos largos que solo necesita una minoria ---------- */
+#ar .plan{width:100%;max-width:560px;border:3px dashed var(--gold-off);background:var(--inset)}
+#ar .plan summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:11px;padding:12px 14px;
+  font-size:clamp(11px,2.4vw,12.5px);letter-spacing:.05em;line-height:1.6;color:var(--gold)}
+#ar .plan summary::-webkit-details-marker{display:none}
+#ar .plan summary::before{content:"+";flex:none;font-family:"Press Start 2P","Courier New",monospace;font-size:11px}
+#ar .plan[open] summary::before{content:"-"}
+#ar .plan summary:hover{color:var(--text)}
+#ar .plan[open] summary{border-bottom:3px dashed var(--gold-off)}
+#ar .plan .dentro{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2.2vh,18px);padding:14px 12px}
+
 /* ---------- barrido en mosaico entre pantallas ---------- */
 #ar .malla{position:absolute;inset:0;z-index:5;pointer-events:none;visibility:hidden;display:grid;
   grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(8,1fr)}
@@ -1184,7 +1195,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">Guadalinex EDU 2013</span>
         </button>
 
-        <button type="button" class="card c4">
+        <button type="button" class="card c4" data-ir="gafas">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="1" y="5" width="14" height="7"/><rect class="p2" x="3" y="7" width="4" height="3"/><rect class="p2" x="9" y="7" width="4" height="3"/><rect class="p1" x="0" y="6" width="1" height="4"/><rect class="p1" x="15" y="6" width="1" height="4"/><rect class="p2" x="7" y="11" width="2" height="1"/></svg>
           </span>
@@ -1291,6 +1302,173 @@ body{margin:0;background:#0e0f1d}
               <p>Confirma con <b>Eliminar</b>.</p>
               <p class="apunte">Es lo que hay que hacer cada vez que cambies la contraseña de IDEA: elimina la red y vuelve a conectarte desde cero.</p>
               <button type="button" class="captura"><img src="img/vexo-3-confirmar.webp" width="617" height="375" loading="lazy" alt="Aviso de confirmación para eliminar la conexión Andared_Corporativo"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c4" data-p="gafas" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="otros"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Gafas de realidad virtual</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué modelo tienes">
+        <button type="button" data-modo="quest" aria-pressed="true">Meta Quest</button>
+        <button type="button" data-modo="vive" aria-pressed="false">HTC Vive</button>
+        <button type="button" data-modo="dpvr" aria-pressed="false">DPVR E4</button>
+      </div>
+
+      <div class="proc" data-proc="quest">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Al encender las gafas te pedirá conexión wifi. Selecciona <code>Andared_Corporativo</code>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Configura la red así:</p>
+              <dl class="ajustes">
+                <div><dt>EAP method</dt><dd>PEAP</dd></div>
+                <div><dt>Autenticación de fase 2</dt><dd>GTC</dd></div>
+                <div><dt>Certificado CA</dt><dd>Usar certificados del sistema</dd></div>
+                <div><dt>Dominio</dt><dd>andared.junta-andalucia.es</dd></div>
+              </dl>
+              <p class="apunte">En <b>Identidad</b> va tu usuario de IDEA y en <b>Contraseña</b> la suya. Deja <b>Identidad anónima</b> vacía y el resto de opciones por defecto.</p>
+              <button type="button" class="captura"><img src="img/rv-1-ficha.webp" width="1089" height="1453" loading="lazy" alt="Ficha de red de las Meta Quest con el desplegable de Certificado CA abierto"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Pulsa <b>Conectar</b>. A partir de ahí las gafas se conectarán solas.</p>
+            </div>
+          </li>
+        </ol>
+        <details class="plan">
+          <summary>¿No conecta? Hay que instalar el certificado de la FNMT</summary>
+          <div class="dentro">
+            <ol class="pasos">
+            <li>
+              <div class="cont">
+                <p>Descarga el certificado <b>AC Raíz FNMT-RCM</b>:<br><a href="https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-RCM_SHA256.cer" target="_blank" rel="noopener">https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-RCM_SHA256.cer</a></p>
+                <p class="apunte">También puedes llegar desde <b>fnmt.es</b> › <b>Sede Electrónica</b> › <b>Soporte</b> › <b>Descargas</b> › <b>Certificados raíz de la FNMT</b>, o bajarlo desde el navegador de las propias gafas con datos móviles.</p>
+                <button type="button" class="captura"><img src="img/rvf-1-web.webp" width="1100" height="615" loading="lazy" alt="Web de la Sede Electrónica de la FNMT con la descarga del certificado raíz"></button>
+              </div>
+            </li>
+            <li>
+              <div class="cont">
+                <p>Si lo bajaste en otro ordenador, cópialo a un pendrive y conéctalo al <b>USB-C</b> de las gafas.</p>
+                <p class="apunte">Puede que necesites un adaptador que no viene con el material recibido.</p>
+              </div>
+            </li>
+            <li>
+              <div class="cont">
+                <p>En la ficha de la red, despliega <b>Certificado CA</b> y elige <b>Instalar certificados</b>.</p>
+              </div>
+            </li>
+            <li>
+              <div class="cont">
+                <p>En el margen izquierdo, pulsa el icono del pendrive y selecciona el certificado descargado.</p>
+              </div>
+            </li>
+            <li>
+              <div class="cont">
+                <p>Elige <b>certificado de Wi-Fi</b> y ponle un nombre que reconozcas después en la lista.</p>
+              </div>
+            </li>
+            <li>
+              <div class="cont">
+                <p>Sal de la red con la flecha de volver.</p>
+                <button type="button" class="captura"><img src="img/rvf-2-salir.webp" width="1100" height="169" loading="lazy" alt="Pantalla de las gafas con la flecha de volver señalada"></button>
+              </div>
+            </li>
+            <li>
+              <div class="cont">
+                <p>Vuelve a entrar en <code>Andared_Corporativo</code> con la flecha <b>›</b> y pulsa <b>Editar</b>.</p>
+                <button type="button" class="captura"><img src="img/rvf-3-volver.webp" width="1100" height="218" loading="lazy" alt="Pantalla de las gafas con la flecha de entrar en la red señalada"></button>
+              </div>
+            </li>
+            <li>
+              <div class="cont">
+                <p>En <b>Certificado CA</b> elige ahora tu certificado y pulsa <b>Conectar</b>.</p>
+                <p class="apunte">Si algún campo se ha quedado vacío al volver, rellénalo otra vez antes de conectar.</p>
+              </div>
+            </li>
+            </ol>
+          </div>
+        </details>
+      </div>
+
+      <div class="proc" data-proc="vive" hidden>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Al encender por primera vez pasarás por la configuración inicial: idioma, dioptrías de cada ojo, volumen…</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Cuando llegues a la ventana de Wi-Fi, selecciona <code>Andared_Corporativo</code> y escribe tu usuario de IDEA y su contraseña.</p>
+              <p class="apunte">Deja <b>Identidad anónima</b> vacía.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Despliega el submenú de <b>opciones avanzadas</b> y configura:</p>
+              <dl class="ajustes">
+                <div><dt>Método EAP</dt><dd>PEAP</dd></div>
+                <div><dt>Autenticación de fase 2</dt><dd>GTC</dd></div>
+                <div><dt>Certificados de CA</dt><dd>No se valida</dd></div>
+                <div><dt>Proxy</dt><dd>Ninguno</dd></div>
+                <div><dt>Ajuste de IP</dt><dd>DHCP</dd></div>
+                <div><dt>Privacidad</dt><dd>Usar MAC aleatorio</dd></div>
+              </dl>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Pulsa <b>Conectar</b>. A partir de ahí las gafas se conectarán solas.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="dpvr" hidden>
+        <p class="ojo">Estas gafas no se conectan a Andared_Corporativo. Van por cable a un ordenador, y es ese ordenador el que tiene que estar en la red.</p>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Comprueba que el ordenador cumple los requisitos que pide el fabricante.</p>
+              <button type="button" class="captura"><img src="img/rvd-1-requisitos.webp" width="1100" height="328" loading="lazy" alt="Tabla de requisitos mínimos del PC: Windows 10 o superior, Core i5, GTX 1060, 8 GB y DisplayPort 1.4"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Conecta ese ordenador a <code>Andared_Corporativo</code> siguiendo los pasos de su sistema operativo.</p>
+              <p class="apunte">Vuelve al inicio y elige Windows, Guadalinex o el sistema que tenga el equipo.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Conecta las gafas al ordenador con los dos cables: uno <b>DisplayPort</b> y otro <b>USB</b>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Instala en el ordenador la aplicación <b>DPVR Asistente 4</b>:<br><a href="https://product.dpvr.com/assistant4/download-cn.html" target="_blank" rel="noopener">https://product.dpvr.com/assistant4/download-cn.html</a></p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Ábrela: te guía paso a paso durante la configuración inicial de las gafas.</p>
             </div>
           </li>
         </ol>
