@@ -1866,6 +1866,35 @@ body{margin:0;background:var(--void)}
     try{ a.currentTime=0; var pr=a.play(); if(pr&&pr.catch) pr.catch(function(){}); }catch(e){}
   }
   function recuerda(clave,valor){ try{ localStorage.setItem(clave,valor); }catch(e){} }
+
+  var musica=false, audioMus=null, arranque=null;
+  function preparaMusica(){
+    if(audioMus) return audioMus;
+    try{
+      audioMus=new Audio('neon-protocol.mp3');
+      audioMus.loop=true;
+      audioMus.volume=0.4;   // de fondo, sin tapar nada
+      audioMus.preload='auto';
+    }catch(e){ audioMus=null; }
+    return audioMus;
+  }
+  function musicaEnMarcha(){
+    var a=preparaMusica(); if(!a) return;
+    var pr=null;
+    try{ pr=a.play(); }catch(e){}
+    if(pr&&pr.catch) pr.catch(function(){
+      // el navegador exige un gesto previo: se reintenta en la siguiente pulsacion
+      if(arranque) return;
+      arranque=function(){
+        document.removeEventListener('pointerdown',arranque);
+        arranque=null;
+        if(musica) musicaEnMarcha();
+      };
+      document.addEventListener('pointerdown',arranque);
+    });
+  }
+  // pausar y no parar: asi al volver sigue por donde iba
+  function musicaEnPausa(){ if(audioMus){ try{ audioMus.pause(); }catch(e){} } }
   function pintaTema(claro){
     doc.classList.toggle('claro', claro);
     if(meta) meta.setAttribute('content', claro?'#e6e8f4':'#0e0f1d');
@@ -1879,6 +1908,7 @@ body{margin:0;background:var(--void)}
     if(localStorage.getItem('andared-tema')==='claro'){ pintaTema(true); marca('tema'); }
     // si ya lo tenia activado, se precarga para que el primer clic no llegue tarde
     if(localStorage.getItem('andared-sonido')==='si'){ sonido=true; marca('sonido'); preparaClic(); }
+    if(localStorage.getItem('andared-musica')==='si'){ musica=true; marca('musica'); musicaEnMarcha(); }
   }catch(e){}
   function cierraLupa(){ lupa.classList.remove('abierta'); }
 
@@ -1889,6 +1919,10 @@ body{margin:0;background:var(--void)}
       tgl.setAttribute('aria-pressed', act);
       if(cual==='tema'){ pintaTema(act); recuerda('andared-tema', act?'claro':'oscuro'); }
       if(cual==='sonido'){ sonido=act; recuerda('andared-sonido', act?'si':'no'); }
+      if(cual==='musica'){
+        musica=act; recuerda('andared-musica', act?'si':'no');
+        if(act) musicaEnMarcha(); else musicaEnPausa();
+      }
       return;
     }
     // solo suenan los botones del contenido: ni las barras ni las capturas
