@@ -1203,7 +1203,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">Meta Quest, Vive y DPVR</span>
         </button>
 
-        <button type="button" class="card c4">
+        <button type="button" class="card c4" data-ir="smart">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="0" y="3" width="16" height="10"/><rect class="p2" x="1" y="4" width="14" height="8"/><rect class="p1" x="3" y="10" width="1" height="1"/><rect class="p1" x="4" y="9" width="1" height="1"/><rect class="p1" x="5" y="8" width="1" height="1"/><rect class="p1" x="6" y="7" width="1" height="1"/><rect class="p1" x="7" y="6" width="1" height="1"/><rect class="p1" x="8" y="5" width="2" height="1"/></svg>
           </span>
@@ -1211,7 +1211,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">SBID-MX075-V5</span>
         </button>
 
-        <button type="button" class="card c4">
+        <button type="button" class="card c4" data-ir="newline">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="0" y="3" width="16" height="10"/><rect class="p2" x="1" y="4" width="14" height="8"/><rect class="p1" x="4" y="6" width="8" height="1"/><rect class="p1" x="4" y="8" width="8" height="1"/><rect class="p1" x="4" y="10" width="5" height="1"/></svg>
           </span>
@@ -1219,7 +1219,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">TT-7523QAS</span>
         </button>
 
-        <button type="button" class="card c4">
+        <button type="button" class="card c4" data-ir="viewsonic">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="0" y="3" width="16" height="10"/><rect class="p2" x="1" y="4" width="14" height="8"/><rect class="p1" x="4" y="6" width="3" height="1"/><rect class="p1" x="3" y="7" width="1" height="2"/><rect class="p1" x="7" y="7" width="1" height="2"/><rect class="p1" x="4" y="9" width="3" height="1"/><rect class="p2" x="5" y="7" width="1" height="2"/><rect class="p1" x="8" y="8" width="4" height="1"/><rect class="p1" x="10" y="9" width="1" height="1"/><rect class="p1" x="12" y="9" width="1" height="1"/></svg>
           </span>
@@ -1469,6 +1469,271 @@ body{margin:0;background:#0e0f1d}
           <li>
             <div class="cont">
               <p>Ábrela: te guía paso a paso durante la configuración inicial de las gafas.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c4" data-p="smart" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="otros"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg> Volver</button>
+        <h1 class="donde">Panel Smart SBID-MX075-V5</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>En el sistema Android del panel, entra en el apartado <b>Wi-Fi</b> y selecciona <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/pan-1-lista.webp" width="1000" height="563" loading="lazy" alt="Lista de redes wifi del panel con Andared_Corporativo"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Rellena la ficha de la red así:</p>
+              <dl class="ajustes">
+                <div><dt>Método EAP</dt><dd>PEAP</dd></div>
+                <div><dt>Autenticación de fase 2</dt><dd>GTC</dd></div>
+                <div><dt>Certificado AC</dt><dd>Usar certificados del sistema</dd></div>
+                <div><dt>Estado del certificado online</dt><dd>No verificar</dd></div>
+                <div><dt>Dominio</dt><dd>andared.junta-andalucia.es</dd></div>
+              </dl>
+              <button type="button" class="captura"><img src="img/pan-2-smart.webp" width="664" height="570" loading="lazy" alt="Ficha de red del panel Smart con los cinco campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y conecta.</p>
+              <p class="apunte">Si el panel conecta pero no navega, reinícialo.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p><b>Si ya la tenías configurada</b> y solo quieres cambiar los ajustes: entra en <b>Wi-Fi</b>, selecciona <code>Andared_Corporativo</code> y pulsa el <b>lápiz</b>.</p>
+              <button type="button" class="captura"><img src="img/pan-4-editar.webp" width="1000" height="563" loading="lazy" alt="Detalles de red del panel con el lápiz de editar señalado"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Entra en los ajustes de <b>Wi-Fi</b> y pulsa el <b>engranaje</b> de <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/pano-1-lista.webp" width="1000" height="563" loading="lazy" alt="Ajustes de Internet del panel con el engranaje de la red"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En <b>Detalles de red</b>, pulsa <b>Olvidar</b>.</p>
+              <p class="apunte">Es lo que hay que hacer cada vez que cambies la contraseña de IDEA: olvida la red y vuelve a conectarte desde cero.</p>
+              <button type="button" class="captura"><img src="img/pano-2-olvidar.webp" width="1000" height="562" loading="lazy" alt="Detalles de red con los botones Olvidar y Conectar"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c4" data-p="newline" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="otros"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg> Volver</button>
+        <h1 class="donde">Panel Newline TT-7523QAS</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>En el sistema Android del panel, entra en el apartado <b>Wi-Fi</b> y selecciona <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/pan-1-lista.webp" width="1000" height="563" loading="lazy" alt="Lista de redes wifi del panel con Andared_Corporativo"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Rellena la ficha de la red así:</p>
+              <dl class="ajustes">
+                <div><dt>Método EAP</dt><dd>PEAP</dd></div>
+                <div><dt>Autenticación de fase 2</dt><dd>GTC</dd></div>
+                <div><dt>Certificado AC</dt><dd>Usar certificados del sistema</dd></div>
+                <div><dt>Dominio</dt><dd>andared.junta-andalucia.es</dd></div>
+              </dl>
+              <button type="button" class="captura"><img src="img/pan-3-newline.webp" width="716" height="507" loading="lazy" alt="Ficha de red del panel Newline con los cuatro campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y conecta.</p>
+              <p class="apunte">Si el panel conecta pero no navega, reinícialo.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p><b>Si ya la tenías configurada</b> y solo quieres cambiar los ajustes: entra en <b>Wi-Fi</b>, selecciona <code>Andared_Corporativo</code> y pulsa el <b>lápiz</b>.</p>
+              <button type="button" class="captura"><img src="img/pan-4-editar.webp" width="1000" height="563" loading="lazy" alt="Detalles de red del panel con el lápiz de editar señalado"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Entra en los ajustes de <b>Wi-Fi</b> y pulsa el <b>engranaje</b> de <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/pano-1-lista.webp" width="1000" height="563" loading="lazy" alt="Ajustes de Internet del panel con el engranaje de la red"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En <b>Detalles de red</b>, pulsa <b>Olvidar</b>.</p>
+              <p class="apunte">Es lo que hay que hacer cada vez que cambies la contraseña de IDEA: olvida la red y vuelve a conectarte desde cero.</p>
+              <button type="button" class="captura"><img src="img/pano-2-olvidar.webp" width="1000" height="562" loading="lazy" alt="Detalles de red con los botones Olvidar y Conectar"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c4" data-p="viewsonic" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="otros"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg> Volver</button>
+        <h1 class="donde">Panel ViewSonic IFP7533</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <p class="ojo">Este panel es el único que necesita instalar antes el certificado raíz de la FNMT. Los siete primeros pasos son para eso; a partir del octavo ya se configura la red.</p>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Descarga el certificado raíz de la FNMT. El que hace falta es <b>AC Raíz de la FNMT Servidores Seguros</b>, no el primero de la lista.<br><a href="https://www.sede.fnmt.gob.es/descargas/certificados-raiz-de-la-fnmt" target="_blank" rel="noopener">https://www.sede.fnmt.gob.es/descargas/certificados-raiz-de-la-fnmt</a></p>
+              <p class="apunte">Puedes bajarlo de dos formas: conectando el panel a internet compartiendo datos con el móvil, o descargarlo en otro ordenador, copiarlo a un pendrive y enchufarlo al panel.</p>
+              <button type="button" class="captura"><img src="img/vs-1-fnmt.webp" width="1000" height="295" loading="lazy" alt="Página de certificados raíz de la FNMT con AC Raíz Servidores Seguros señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En el panel, ve a <b>Ajustes</b> › <b>Sistema</b>.</p>
+              <button type="button" class="captura"><img src="img/vs-2-sistema.webp" width="1000" height="750" loading="lazy" alt="Configuración del panel ViewSonic con el apartado Sistema"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Entra en <b>Seguridad</b> y pulsa <b>Wi-Fi certificate</b>.</p>
+              <button type="button" class="captura"><img src="img/vs-3-seguridad.webp" width="1000" height="750" loading="lazy" alt="Pantalla de Seguridad con los botones de certificado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Busca el certificado donde lo hayas guardado y ábrelo.</p>
+              <button type="button" class="captura"><img src="img/vs-4-buscar.webp" width="1000" height="750" loading="lazy" alt="Explorador de archivos del panel mostrando el certificado descargado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Ponle un nombre que reconozcas después, por ejemplo <code>andared_corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/vs-5-nombre.webp" width="1000" height="750" loading="lazy" alt="Cuadro para dar un nombre al certificado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Vuelve a <b>Seguridad</b> y entra en <b>Credencial de confianza</b>.</p>
+              <button type="button" class="captura"><img src="img/vs-6-credencial.webp" width="1000" height="750" loading="lazy" alt="Pantalla de Seguridad con la opción Credencial de confianza"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En la pestaña <b>Instalado manualmente</b> debe aparecer el nombre que le pusiste.</p>
+              <p class="apunte">Si no aparece, el certificado no se instaló y no merece la pena seguir: repite los pasos anteriores.</p>
+              <button type="button" class="captura"><img src="img/vs-7-instalado.webp" width="1000" height="750" loading="lazy" alt="Credencial de confianza, pestaña Instalado manualmente, con el certificado en la lista"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Ya con el certificado puesto, ve a <b>Ajustes</b> › <b>Conexión inalámbrica y redes</b>.</p>
+              <button type="button" class="captura"><img src="img/vs-8-inalambrica.webp" width="1000" height="562" loading="lazy" alt="Configuración del panel con Conexión inalámbrica y redes"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Entra en <b>Wi-Fi</b> y selecciona <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/vs-9-wifi.webp" width="1000" height="562" loading="lazy" alt="Pantalla de Wi-Fi del panel con la lista de redes"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Rellena la ficha de la red así:</p>
+              <dl class="ajustes">
+                <div><dt>EAP method</dt><dd>PEAP</dd></div>
+                <div><dt>Phase 2 authentication</dt><dd>GTC</dd></div>
+                <div><dt>CA certificate</dt><dd>el nombre que le pusiste</dd></div>
+                <div><dt>Domain</dt><dd>andared.junta-andalucia.es</dd></div>
+              </dl>
+              <button type="button" class="captura"><img src="img/vs-10-ficha.webp" width="899" height="1599" loading="lazy" alt="Ficha de red del panel ViewSonic con los cuatro campos rellenos"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y pulsa <b>Unirse</b>.</p>
+              <p class="apunte">Si el panel conecta pero no navega, reinícialo.</p>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p><b>Si ya la tenías configurada</b> y solo quieres cambiar los ajustes: entra en <b>Wi-Fi</b>, selecciona <code>Andared_Corporativo</code> y pulsa el <b>lápiz</b>.</p>
+              <button type="button" class="captura"><img src="img/pan-4-editar.webp" width="1000" height="563" loading="lazy" alt="Detalles de red del panel con el lápiz de editar señalado"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Entra en los ajustes de <b>Wi-Fi</b> y pulsa el <b>engranaje</b> de <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/pano-1-lista.webp" width="1000" height="563" loading="lazy" alt="Ajustes de Internet del panel con el engranaje de la red"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En <b>Detalles de red</b>, pulsa <b>Olvidar</b>.</p>
+              <p class="apunte">Es lo que hay que hacer cada vez que cambies la contraseña de IDEA: olvida la red y vuelve a conectarte desde cero.</p>
+              <button type="button" class="captura"><img src="img/pano-2-olvidar.webp" width="1000" height="562" loading="lazy" alt="Detalles de red con los botones Olvidar y Conectar"></button>
             </div>
           </li>
         </ol>
