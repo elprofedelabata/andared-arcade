@@ -220,8 +220,23 @@ body{margin:0;background:#0e0f1d}
   83%,100%{transform:translateX(0)}}
 
 /* ---------- creditos ---------- */
-#ar .cred{flex:none;padding:13px 16px calc(13px + env(safe-area-inset-bottom,0px));border-top:4px solid var(--line);
-  text-align:center;font-size:clamp(10px,2.4vw,12px);letter-spacing:.07em;line-height:1.8;color:var(--dim)}
+#ar .cred{flex:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:4px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;
+  font-size:clamp(10px,2.4vw,12px);letter-spacing:.07em;line-height:1.8;color:var(--dim)}
+#ar .cred p{flex:1 1 auto;min-width:0;text-align:center}
+
+/* mandos: de momento solo cambian de estado, no hacen nada todavia */
+#ar .mandos{flex:none;display:flex;gap:7px}
+#ar .tgl{width:30px;height:30px;flex:none;display:grid;place-items:center;padding:0;
+  background:var(--screen);border:2px solid var(--line);color:var(--dim);
+  transition:border-color .08s steps(2),color .08s steps(2),background-color .08s steps(2)}
+#ar .tgl:hover{border-color:var(--gold);color:var(--gold)}
+#ar .tgl:active{transform:translateY(1px)}
+#ar .tgl[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:var(--inset)}
+#ar .tgl svg{width:16px;height:16px;fill:currentColor}
+#ar .tgl .b{display:none}
+#ar .tgl[aria-pressed="true"] .a{display:none}
+#ar .tgl[aria-pressed="true"] .b{display:block}
 #ar .cred a{color:var(--gold);text-decoration:none;border-bottom:2px solid var(--gold-off);padding:1px 3px}
 #ar .cred a:hover{background:var(--gold);color:var(--void);border-bottom-color:var(--gold)}
 @media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}#ar .malla{display:none}}
@@ -1750,7 +1765,21 @@ body{margin:0;background:#0e0f1d}
   <div class="lupa" id="lupa" aria-hidden="true"><img alt=""></div>
 
   <footer class="cred">
-    Dise&ntilde;ado por <a href="https://elprofedelabata.es/" target="_blank" rel="noopener">el profe de la bata</a>
+    <p>Dise&ntilde;ado por <a href="https://elprofedelabata.es/" target="_blank" rel="noopener">el profe de la bata</a></p>
+    <div class="mandos">
+      <button type="button" class="tgl" data-tgl="tema" aria-pressed="false" aria-label="Cambiar entre modo oscuro y claro" title="Modo oscuro o claro">
+        <svg class="a" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="2" width="5" height="1"/><rect x="4" y="3" width="5" height="1"/><rect x="3" y="4" width="4" height="1"/><rect x="2" y="5" width="4" height="1"/><rect x="2" y="6" width="3" height="1"/><rect x="2" y="7" width="3" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="2" y="9" width="4" height="1"/><rect x="3" y="10" width="4" height="1"/><rect x="4" y="11" width="5" height="1"/><rect x="6" y="12" width="5" height="1"/></svg>
+        <svg class="b" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="6" width="4" height="4"/><rect x="7" y="2" width="2" height="2"/><rect x="7" y="12" width="2" height="2"/><rect x="2" y="7" width="2" height="2"/><rect x="12" y="7" width="2" height="2"/><rect x="3" y="3" width="2" height="2"/><rect x="11" y="3" width="2" height="2"/><rect x="3" y="11" width="2" height="2"/><rect x="11" y="11" width="2" height="2"/></svg>
+      </button>
+      <button type="button" class="tgl" data-tgl="sonido" aria-pressed="false" aria-label="Activar o desactivar el sonido" title="Sonido">
+        <svg class="a" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="6" width="2" height="4"/><rect x="4" y="5" width="1" height="6"/><rect x="5" y="4" width="1" height="8"/><rect x="6" y="3" width="1" height="10"/><rect x="9" y="5" width="1" height="1"/><rect x="12" y="5" width="1" height="1"/><rect x="10" y="6" width="2" height="1"/><rect x="10" y="7" width="2" height="1"/><rect x="9" y="8" width="1" height="1"/><rect x="12" y="8" width="1" height="1"/></svg>
+        <svg class="b" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="6" width="2" height="4"/><rect x="4" y="5" width="1" height="6"/><rect x="5" y="4" width="1" height="8"/><rect x="6" y="3" width="1" height="10"/><rect x="9" y="6" width="1" height="4"/><rect x="11" y="4" width="1" height="8"/></svg>
+      </button>
+      <button type="button" class="tgl" data-tgl="letra" aria-pressed="false" aria-label="Cambiar el tipo de letra" title="Tipo de letra">
+        <svg class="a" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="1" width="9" height="3"/><rect x="1" y="4" width="3" height="3"/><rect x="13" y="4" width="3" height="3"/><rect x="1" y="7" width="15" height="3"/><rect x="1" y="10" width="3" height="3"/><rect x="13" y="10" width="3" height="3"/><rect x="1" y="13" width="3" height="3"/><rect x="13" y="13" width="3" height="3"/></svg>
+        <svg class="b" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="7" y="2" width="2" height="1"/><rect x="6" y="3" width="1" height="2"/><rect x="9" y="3" width="1" height="2"/><rect x="5" y="5" width="1" height="2"/><rect x="10" y="5" width="1" height="2"/><rect x="4" y="7" width="8" height="1"/><rect x="4" y="8" width="1" height="2"/><rect x="11" y="8" width="1" height="2"/><rect x="3" y="10" width="1" height="2"/><rect x="12" y="10" width="1" height="2"/><rect x="2" y="12" width="3" height="1"/><rect x="11" y="12" width="3" height="1"/></svg>
+      </button>
+    </div>
   </footer>
 
 </div>
@@ -1795,6 +1824,8 @@ body{margin:0;background:#0e0f1d}
   function cierraLupa(){ lupa.classList.remove('abierta'); }
 
   raiz.addEventListener('click',function(e){
+    var tgl=e.target.closest('.tgl');
+    if(tgl){ tgl.setAttribute('aria-pressed', tgl.getAttribute('aria-pressed')!=='true'); return; }
     var cap=e.target.closest('.captura');
     if(cap){
       var im=cap.querySelector('img');
