@@ -295,7 +295,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">Windows, Linux o Chromebook</span>
         </button>
 
-        <button type="button" class="card c2">
+        <button type="button" class="card c2" data-ir="android">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
               <rect class="p1" x="3" y="0" width="1" height="1"/><rect class="p1" x="4" y="1" width="1" height="1"/>
@@ -989,6 +989,76 @@ body{margin:0;background:#0e0f1d}
             </div>
           </li>
         </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c2" data-p="android" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="inicio"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Android</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Activa el wifi y toca <code>Andared_Corporativo</code> en la lista de redes.</p>
+              <button type="button" class="captura"><img src="img/and-1-red.webp" width="296" height="639" loading="lazy" alt="Lista de redes wifi de Android con Andared_Corporativo señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Despliega <b>Opciones avanzadas</b> y configura la ficha así:</p>
+              <dl class="ajustes">
+                <div><dt>Método EAP</dt><dd>PEAP</dd></div>
+                <div><dt>Autenticación de fase 2</dt><dd>GTC</dd></div>
+                <div><dt>Certificado de CA</dt><dd>No validar</dd></div>
+                <div><dt>Privacidad</dt><dd>Usar dispositivo</dd></div>
+              </dl>
+              <button type="button" class="captura"><img src="img/and-5-ficha.webp" width="273" height="576" loading="lazy" alt="Ficha de la red con los cuatro campos señalados, más usuario y contraseña"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p><b>Autenticación de fase 2</b> se abre en su propio desplegable. Elige <b>GTC</b>.</p>
+              <button type="button" class="captura"><img src="img/and-2-gtc.webp" width="274" height="576" loading="lazy" alt="Desplegable de Autenticación de fase 2 con GTC marcado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>En <b>Certificado de CA</b>, elige <b>No validar</b>.</p>
+              <button type="button" class="captura"><img src="img/and-3-no-validar.webp" width="277" height="576" loading="lazy" alt="Desplegable de Certificado de CA con No validar marcado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Si tu Android <b>no ofrece No validar</b>, sáltate ese campo: su lista solo tendrá estas opciones.</p>
+              <button type="button" class="captura"><img src="img/and-4-sin-opcion.webp" width="220" height="151" loading="lazy" alt="Desplegable de certificado sin la opción No validar"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y pulsa <b>Guardar</b>. Si son correctos, ya estás conectado.</p>
+              <p class="apunte">Deja <b>Identidad anónima</b> vacía.</p>
+              <button type="button" class="captura"><img src="img/and-6-conectado.webp" width="325" height="696" loading="lazy" alt="Lista de redes con Andared_Corporativo marcado como conectado"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="ojo">Todavía sin volcar desde la guía.</p>
       </div>
 
       </div>
