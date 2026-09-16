@@ -402,7 +402,7 @@ body{margin:0;background:#0e0f1d}
           <span class="label">Windows 11</span>
         </button>
 
-        <button type="button" class="card c1">
+        <button type="button" class="card c1" data-ir="chromeos">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="6" y="2" width="4" height="1"/><rect class="p1" x="4" y="3" width="8" height="1"/><rect class="p1" x="3" y="4" width="10" height="1"/><rect class="p1" x="3" y="5" width="10" height="1"/><rect class="p1" x="2" y="6" width="12" height="1"/><rect class="p1" x="2" y="7" width="12" height="1"/><rect class="p1" x="2" y="8" width="12" height="1"/><rect class="p1" x="2" y="9" width="12" height="1"/><rect class="p1" x="3" y="10" width="10" height="1"/><rect class="p1" x="3" y="11" width="10" height="1"/><rect class="p1" x="4" y="12" width="8" height="1"/><rect class="p1" x="6" y="13" width="4" height="1"/><rect class="p2" x="6" y="5" width="4" height="1"/><rect class="p2" x="5" y="6" width="6" height="1"/><rect class="p2" x="5" y="7" width="6" height="1"/><rect class="p2" x="5" y="8" width="6" height="1"/><rect class="p2" x="5" y="9" width="6" height="1"/><rect class="p2" x="6" y="10" width="4" height="1"/><rect class="p4" x="7" y="7" width="2" height="1"/><rect class="p4" x="7" y="8" width="2" height="1"/></svg>
           </span>
@@ -892,6 +892,77 @@ body{margin:0;background:#0e0f1d}
             </div>
           </li>
         </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c1" data-p="chromeos" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="ordenador"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Chrome OS</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Pulsa el <b>icono de redes inalámbricas</b> de la esquina.</p>
+              <button type="button" class="captura"><img src="img/cos-1-icono.webp" width="336" height="458" loading="lazy" alt="Panel de configuración rápida de Chrome OS con el icono de red señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Elige <code>Andared_Corporativo</code> en la lista de redes.</p>
+              <button type="button" class="captura"><img src="img/cos-2-red.webp" width="339" height="449" loading="lazy" alt="Lista de redes de Chrome OS con Andared_Corporativo señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Se abre la ficha de la red. Configúrala así:</p>
+              <dl class="ajustes">
+                <div><dt>Método EAP</dt><dd>PEAP</dd></div>
+                <div><dt>Autenticación de fase 2 EAP</dt><dd>Automático</dd></div>
+                <div><dt>Certificado AC del servidor</dt><dd>Predeterminado</dd></div>
+              </dl>
+              <p class="apunte">El <b>SSID</b> se rellena solo al haber elegido la red en el paso anterior.</p>
+              <button type="button" class="captura"><img src="img/cos-3-ajustes.webp" width="527" height="499" loading="lazy" alt="Ficha Unirse a la red Wi-Fi con método EAP PEAP y certificado Predeterminado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Más abajo en la misma ficha, escribe tu usuario y contraseña de IDEA y pulsa <b>Conectar</b>.</p>
+              <p class="apunte">Deja <b>Identidad anónima</b> vacía.</p>
+              <button type="button" class="captura"><img src="img/cos-4-credenciales.webp" width="524" height="471" loading="lazy" alt="Parte inferior de la ficha con los campos de identidad y contraseña"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p><b>Solo si no consigue conectar</b>: vuelve a la ficha y cambia <b>Certificado AC del servidor</b> a <b>No comprobar</b>.</p>
+              <p class="apunte">Hace falta en la versión 112.0.5615.62 del sistema. En el resto, con <b>Predeterminado</b> basta.</p>
+              <button type="button" class="captura"><img src="img/cos-5-no-comprobar.webp" width="534" height="477" loading="lazy" alt="La misma ficha con el certificado AC del servidor puesto en No comprobar"></button>
+            </div>
+          </li>
+        </ol>
+        <div class="ojo izq">Si aun así no conecta, revisa esto:
+          <ul>
+            <li>Que el Chromebook tenga la fecha y la hora correctas.</li>
+            <li>Si está recién estrenado, haz la configuración inicial con otra wifi y repite después el proceso con Andared_Corporativo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <p class="ojo">Todavía sin volcar desde la guía.</p>
       </div>
 
       </div>
