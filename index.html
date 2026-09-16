@@ -1852,31 +1852,47 @@ body{margin:0;background:var(--void)}
   var lupa=document.getElementById('lupa'), lupaImg=lupa.firstElementChild;
 
   var doc=document.documentElement, meta=document.querySelector('meta[name="theme-color"]');
+
+  var sonido=false, audioClic=null;
+  function preparaClic(){
+    if(audioClic) return audioClic;
+    try{ audioClic=new Audio('click-sonido.mp3'); audioClic.preload='auto'; }catch(e){ audioClic=null; }
+    return audioClic;
+  }
+  function suena(){
+    if(!sonido) return;
+    var a=preparaClic(); if(!a) return;
+    // se rebobina para que dos pulsaciones seguidas suenen las dos
+    try{ a.currentTime=0; var pr=a.play(); if(pr&&pr.catch) pr.catch(function(){}); }catch(e){}
+  }
+  function recuerda(clave,valor){ try{ localStorage.setItem(clave,valor); }catch(e){} }
   function pintaTema(claro){
     doc.classList.toggle('claro', claro);
     if(meta) meta.setAttribute('content', claro?'#e6e8f4':'#0e0f1d');
   }
   // si el navegador guardo una eleccion anterior, se respeta al arrancar
+  function marca(cual){
+    var b=raiz.querySelector('[data-tgl="'+cual+'"]');
+    if(b) b.setAttribute('aria-pressed','true');
+  }
   try{
-    if(localStorage.getItem('andared-tema')==='claro'){
-      pintaTema(true);
-      var bt=raiz.querySelector('[data-tgl="tema"]');
-      if(bt) bt.setAttribute('aria-pressed','true');
-    }
+    if(localStorage.getItem('andared-tema')==='claro'){ pintaTema(true); marca('tema'); }
+    // si ya lo tenia activado, se precarga para que el primer clic no llegue tarde
+    if(localStorage.getItem('andared-sonido')==='si'){ sonido=true; marca('sonido'); preparaClic(); }
   }catch(e){}
   function cierraLupa(){ lupa.classList.remove('abierta'); }
 
   raiz.addEventListener('click',function(e){
     var tgl=e.target.closest('.tgl');
     if(tgl){
-      var act=tgl.getAttribute('aria-pressed')!=='true';
+      var act=tgl.getAttribute('aria-pressed')!=='true', cual=tgl.getAttribute('data-tgl');
       tgl.setAttribute('aria-pressed', act);
-      if(tgl.getAttribute('data-tgl')==='tema'){
-        pintaTema(act);
-        try{ localStorage.setItem('andared-tema', act?'claro':'oscuro'); }catch(e){}
-      }
+      if(cual==='tema'){ pintaTema(act); recuerda('andared-tema', act?'claro':'oscuro'); }
+      if(cual==='sonido'){ sonido=act; recuerda('andared-sonido', act?'si':'no'); }
+      suena();   // al encenderlo suena de confirmacion; al apagarlo ya no
       return;
     }
+    if(e.target.closest('button')) suena();
     var cap=e.target.closest('.captura');
     if(cap){
       var im=cap.querySelector('img');
