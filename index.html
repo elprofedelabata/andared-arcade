@@ -1891,8 +1891,8 @@ body{margin:0;background:var(--void)}
       if(cual==='sonido'){ sonido=act; recuerda('andared-sonido', act?'si':'no'); }
       return;
     }
-    // solo suena el contenido: las barras de arriba y abajo van mudas
-    if(e.target.closest('main') && e.target.closest('button')) suena();
+    // solo suenan los botones del contenido: ni las barras ni las capturas
+    if(e.target.closest('main') && e.target.closest('button') && !e.target.closest('.captura')) suena();
     var cap=e.target.closest('.captura');
     if(cap){
       var im=cap.querySelector('img');
