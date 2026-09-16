@@ -313,7 +313,7 @@ body{margin:0;background:#0e0f1d}
           <span class="meta">M&oacute;vil o tablet</span>
         </button>
 
-        <button type="button" class="card c3">
+        <button type="button" class="card c3" data-ir="apple">
           <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
               <rect class="p1" x="9" y="0" width="3" height="1"/><rect class="p1" x="8" y="1" width="3" height="1"/>
@@ -1076,6 +1076,85 @@ body{margin:0;background:#0e0f1d}
               <p>Confirma con <b>Aceptar</b>.</p>
               <p class="apunte">Es lo que hay que hacer cada vez que cambies la contraseña de IDEA: olvida la red y vuelve a conectarte desde cero.</p>
               <button type="button" class="captura"><img src="img/ando-3-aceptar.webp" width="238" height="426" loading="lazy" alt="Aviso de confirmación de Olvidar red con el botón Aceptar"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section class="pantalla larga c3" data-p="apple" tabindex="-1" hidden>
+
+      <div class="barra">
+        <button type="button" class="volver" data-ir="inicio"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="3" width="1" height="2"/><rect x="3" y="2" width="1" height="4"/><rect x="4" y="1" width="1" height="6"/><rect x="5" y="0" width="1" height="8"/></svg>Volver</button>
+        <h1 class="donde">Apple: iPhone, iPad y Mac</h1>
+      </div>
+
+      <div class="cuerpo">
+
+      <div class="modos" role="group" aria-label="Qué quieres hacer">
+        <button type="button" data-modo="conectar" aria-pressed="true">Conectar red</button>
+        <button type="button" data-modo="olvidar" aria-pressed="false">Olvidar red</button>
+      </div>
+
+      <div class="proc" data-proc="conectar">
+        <p class="ojo">Aquí no hay que configurar método EAP ni fase 2: el dispositivo lo detecta todo solo. Es el caso más rápido de los nueve.</p>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Activa el wifi y toca <code>Andared_Corporativo</code> en la lista de redes.</p>
+              <button type="button" class="captura"><img src="img/app-1-red.webp" width="318" height="548" loading="lazy" alt="Ajustes de Wi-Fi del iPhone con la lista de redes"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Escribe tu usuario y contraseña de IDEA y pulsa <b>Acceder</b>.</p>
+              <button type="button" class="captura"><img src="img/app-2-acceder.webp" width="396" height="279" loading="lazy" alt="Cuadro de contraseña con los campos de usuario y contraseña y el botón Acceder"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Te pedirá verificar el certificado del servidor. Pulsa <b>Confiar</b>.</p>
+              <p class="apunte">Que ponga <b>No fiable</b> es normal: el certificado de la red no está firmado por una autoridad que el dispositivo reconozca de serie.</p>
+              <button type="button" class="captura"><img src="img/app-3-confiar.webp" width="397" height="395" loading="lazy" alt="Pantalla del certificado del servidor con el botón Confiar"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Listo. <code>Andared_Corporativo</code> queda marcada como conectada.</p>
+              <button type="button" class="captura"><img src="img/app-4-conectado.webp" width="683" height="576" loading="lazy" alt="Ajustes de Wi-Fi con Andared_Corporativo marcada con un visto"></button>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proc" data-proc="olvidar" hidden>
+        <ol class="pasos">
+          <li>
+            <div class="cont">
+              <p>Entra en <b>Ajustes</b> › <b>Wi-Fi</b> y toca la <b>ⓘ</b> que hay junto a <code>Andared_Corporativo</code>.</p>
+              <button type="button" class="captura"><img src="img/appo-1-info.webp" width="250" height="496" loading="lazy" alt="Lista de redes con el símbolo de información señalado"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Arriba del todo de la ficha, pulsa <b>Omitir esta red</b>.</p>
+              <button type="button" class="captura"><img src="img/appo-2-omitir.webp" width="273" height="496" loading="lazy" alt="Ficha de la red con la opción Omitir esta red señalada"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Confirma con <b>Omitir</b>.</p>
+              <button type="button" class="captura"><img src="img/appo-3-confirmar.webp" width="301" height="519" loading="lazy" alt="Aviso de confirmación con los botones Cancelar y Omitir"></button>
+            </div>
+          </li>
+          <li>
+            <div class="cont">
+              <p>Ya no se conectará sola: pasa a aparecer como una red más de la lista.</p>
+              <p class="apunte">Es lo que hay que hacer cada vez que cambies la contraseña de IDEA: olvida la red y vuelve a conectarte desde cero.</p>
+              <button type="button" class="captura"><img src="img/appo-4-despues.webp" width="301" height="520" loading="lazy" alt="Lista de redes con Andared_Corporativo ya sin conectar"></button>
             </div>
           </li>
         </ol>
