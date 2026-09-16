@@ -1,30 +1,37 @@
-# Guía Andared_Corporativo
+# Andared Arcade
 
 Guía interactiva para conectarse a **Andared_Corporativo**, la wifi de los centros educativos públicos de Andalucía.
 
-👉 **https://elprofedelabata.github.io/guia-andared-corporativo/**
+👉 **https://elprofedelabata.github.io/andared-arcade/**
 
 Pensada para repartir al claustro: eliges tu dispositivo y te lleva paso a paso, sin las 72 páginas de capturas del manual original.
 
-## Estado
+## Qué cubre
 
-| Rama | Pantallas | Estado |
-|---|---|---|
-| **Ordenador** | Guadalinex EDU / EducaAndOS, Windows 7, Windows 8 y 8.1, Windows 10, Windows 11, Chrome OS | ✅ completa |
-| Android | — | pendiente |
-| Apple | — | pendiente |
-| Otros (paneles del aula y gafas RV) | — | pendiente |
+| Rama | Pantallas |
+|---|---|
+| **Ordenador** | Guadalinex EDU / EducaAndOS · Windows 7 · Windows 8 y 8.1 · Windows 10 · Windows 11 · Chrome OS |
+| **Android** | móvil o tablet |
+| **Apple** | iPhone, iPad y Mac |
+| **Otros** | DDA Vexia · Gafas RV *(Meta Quest, HTC Vive, DPVR E4)* · Panel Smart · Panel Newline · Panel ViewSonic |
 
-La rama Ordenador suma **58 pasos y 56 capturas**, con los dos procedimientos —conectar y olvidar la red— en cada una de sus seis pantallas.
+Trece pantallas de procedimiento, **128 pasos y 107 capturas**, con conectar y olvidar la red en cada una. Las gafas RV son la excepción: el manual original no trae apartado de olvidar red para ellas, así que esa pantalla usa las pestañas para elegir modelo.
 
 ## Cómo está hecho
 
-Un único `index.html` sin dependencias ni proceso de compilación, más las capturas en `img/`. Se edita y se sube, nada más.
+Un único `index.html` sin dependencias ni proceso de compilación, más las capturas en `img/` y dos audios. Se edita y se sube, nada más.
 
 - **Estilo pixel retro**, sin degradados: colores planos, marcos de 4 px, sombras macizas y transiciones en `steps()`.
 - **Iconos en SVG** dibujados como rectángulos sobre una rejilla de 16×16 con `shape-rendering="crispEdges"`, así que no hay ni una curva.
-- **Tipografías** Press Start 2P y Silkscreen, servidas desde Google Fonts.
 - **Transición en mosaico** entre pantallas: 12×8 celdas que entran en diagonal, dentro del interior y sin mover las barras.
+
+### Los cuatro mandos del pie
+
+Tema claro u oscuro, sonido de clic, música de fondo y tipo de letra. Los cuatro recuerdan la elección en el navegador.
+
+- El **modo claro** no es el oscuro invertido: conserva el sesgo índigo del fondo y oscurece los colores de rama hasta que se leen sobre blanco.
+- El **modo legible** cambia a [Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/), del Braille Institute, que separa la I mayúscula de la l minúscula y del 1, y la O del cero. Importa: media guía son cosas que hay que teclear sin equivocarse.
+- Los **audios se descargan solo si los activas**. La música son 4,4 MB.
 
 ### Estructura
 
@@ -32,9 +39,9 @@ Cada pantalla de procedimiento es una `<section class="pantalla larga">` con su 
 
 ### Las capturas
 
-Salen del PDF oficial, optimizadas a WebP y con carga diferida. Un par de avisos para quien las toque:
+Salen del PDF oficial, optimizadas a WebP y con carga diferida. Tres avisos para quien las toque:
 
-- **Varias imágenes del PDF traen dos capturas dentro de un mismo archivo**, una al lado de otra. Hay que partirlas por el hueco blanco o los pasos acaban repitiendo la misma imagen.
+- **Varias imágenes del PDF traen dos o tres capturas dentro de un mismo archivo**, una al lado de otra. Hay que partirlas por el hueco blanco o los pasos acaban repitiendo la misma imagen.
 - **El orden en que el PDF lista las imágenes no siempre es el orden en que están colocadas** en la página. Hay que ordenarlas por su posición, no por el listado.
 - Antes de recortar nada, conviene **renderizar y mirar**: los recuadros rojos a veces están pintados semitransparentes sobre fondo oscuro y se pierden fácilmente.
 
