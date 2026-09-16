@@ -81,7 +81,7 @@ body{margin:0;background:#0e0f1d}
   width:100%;max-width:700px;margin:0 auto}
 #ar .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
 #ar .g5{grid-template-columns:repeat(3,minmax(0,1fr));max-width:560px}
-#ar .g5 .card:last-child{grid-column:span 2}
+#ar .g5 .card:nth-child(2){grid-column:span 2}   /* a 3 columnas ensancha Gafas RV */
 #ar .g6{grid-template-columns:repeat(3,minmax(0,1fr));max-width:560px}
 #ar .card{display:grid;align-content:start;justify-items:center;gap:10px;padding:16px 10px 14px;background:var(--screen);
   border:4px solid var(--line);box-shadow:0 7px 0 0 var(--dark);
@@ -214,7 +214,10 @@ body{margin:0;background:#0e0f1d}
 #ar .cred a{color:var(--gold);text-decoration:none;border-bottom:2px solid var(--gold-off);padding:1px 3px}
 #ar .cred a:hover{background:var(--gold);color:var(--void);border-bottom-color:var(--gold)}
 @media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}#ar .malla{display:none}}
-@media (max-width:660px){#ar .g4,#ar .g5,#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}}
+@media (max-width:660px){#ar .g4,#ar .g5,#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}
+  /* a 2 columnas el ensanche se pasa a la ultima, o Gafas dejaria un hueco a su lado */
+  #ar .g5 .card:nth-child(2){grid-column:auto}
+  #ar .g5 .card:last-child{grid-column:span 2}}
 /* pantallas bajas: se aprieta todo para no tener que desplazar */
 @media (max-height:700px){
   #ar{--pad:12px}
@@ -1183,6 +1186,14 @@ body{margin:0;background:#0e0f1d}
 
         <button type="button" class="card c4">
           <span class="slot">
+            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="1" y="5" width="14" height="7"/><rect class="p2" x="3" y="7" width="4" height="3"/><rect class="p2" x="9" y="7" width="4" height="3"/><rect class="p1" x="0" y="6" width="1" height="4"/><rect class="p1" x="15" y="6" width="1" height="4"/><rect class="p2" x="7" y="11" width="2" height="1"/></svg>
+          </span>
+          <span class="label">Gafas RV</span>
+          <span class="meta">Meta Quest, Vive y DPVR</span>
+        </button>
+
+        <button type="button" class="card c4">
+          <span class="slot">
             <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="0" y="3" width="16" height="10"/><rect class="p2" x="1" y="4" width="14" height="8"/><rect class="p1" x="3" y="10" width="1" height="1"/><rect class="p1" x="4" y="9" width="1" height="1"/><rect class="p1" x="5" y="8" width="1" height="1"/><rect class="p1" x="6" y="7" width="1" height="1"/><rect class="p1" x="7" y="6" width="1" height="1"/><rect class="p1" x="8" y="5" width="2" height="1"/></svg>
           </span>
           <span class="label">Panel Smart</span>
@@ -1203,14 +1214,6 @@ body{margin:0;background:#0e0f1d}
           </span>
           <span class="label">Panel ViewSonic</span>
           <span class="meta">IFP7533 · con certificado</span>
-        </button>
-
-        <button type="button" class="card c4">
-          <span class="slot">
-            <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect class="p1" x="1" y="5" width="14" height="7"/><rect class="p2" x="3" y="7" width="4" height="3"/><rect class="p2" x="9" y="7" width="4" height="3"/><rect class="p1" x="0" y="6" width="1" height="4"/><rect class="p1" x="15" y="6" width="1" height="4"/><rect class="p2" x="7" y="11" width="2" height="1"/></svg>
-          </span>
-          <span class="label">Gafas RV</span>
-          <span class="meta">Meta Quest, Vive y DPVR</span>
         </button>
 
         </div>
