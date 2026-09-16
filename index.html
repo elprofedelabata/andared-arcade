@@ -13,7 +13,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap">
 <style>
 #ar *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -30,6 +30,8 @@ body{margin:0;background:var(--void)}
   --dim:#7e88b8;
   --gold:#ffcb3d;      /* HUD y aviso inferior */
   --gold-off:#544219;  /* arco de wifi todavia apagado */
+  --fuente:"Silkscreen","Courier New",monospace;
+  --fuente-titulo:"Press Start 2P","Courier New",monospace;
   --pc:#45d7ff;        /* ordenador */
   --droid:#4ce07b;     /* android */
   --pome:#ff6b9d;      /* apple */
@@ -59,7 +61,7 @@ body{margin:0;background:var(--void)}
 #ar{
   --pad:clamp(14px,3.4vh,30px); /* relleno vertical del interior */
   height:100vh;height:100dvh;display:flex;flex-direction:column;background:var(--void);color:var(--text);
-  font-family:"Silkscreen","Courier New",monospace;-webkit-font-smoothing:none;
+  font-family:var(--fuente);-webkit-font-smoothing:none;
 }
 #ar button{font-family:inherit;color:inherit;cursor:pointer;border-radius:0}
 #ar :focus-visible{outline:4px solid var(--gold);outline-offset:4px}
@@ -97,7 +99,7 @@ body{margin:0;background:var(--void)}
 #ar .pantalla[hidden]{display:none}
 #ar .pantalla:focus{outline:none}
 #ar .ask{text-align:center;display:grid;justify-items:center}
-#ar h1{font-family:"Press Start 2P","Courier New",monospace;font-size:clamp(14px,4.2vw,24px);
+#ar h1{font-family:var(--fuente-titulo);font-size:clamp(14px,4.2vw,24px);
   line-height:1.6;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;max-width:16ch}
 
 /* ---------- fichas de dispositivo ---------- */
@@ -119,7 +121,7 @@ body{margin:0;background:var(--void)}
 #ar .p4{fill:var(--text)}
 #ar .p2{fill:var(--inset)}
 #ar .p3{fill:var(--dark)}
-#ar .label{font-family:"Press Start 2P","Courier New",monospace;font-size:clamp(9px,1.9vw,11px);
+#ar .label{font-family:var(--fuente-titulo);font-size:clamp(9px,1.9vw,11px);
   line-height:1.5;letter-spacing:.02em;text-align:center}
 #ar .card:hover .label{color:var(--c)}
 #ar .meta{font-size:11px;line-height:1.6;letter-spacing:.04em;color:var(--dim);text-align:center;text-wrap:balance}
@@ -153,7 +155,7 @@ body{margin:0;background:var(--void)}
   background:var(--void);border-bottom:3px solid var(--line);padding:var(--pad) 16px 11px}
 #ar .cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;
   align-items:center;gap:clamp(13px,2.4vh,20px);padding:var(--pad) 16px}
-#ar .donde{flex:1;min-width:0;font-family:"Silkscreen","Courier New",monospace;font-weight:400;
+#ar .donde{flex:1;min-width:0;font-family:var(--fuente);font-weight:400;
   font-size:clamp(10px,2.5vw,13px);letter-spacing:.06em;line-height:1.45;color:var(--c);text-transform:none}
 
 #ar .modos{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
@@ -176,7 +178,7 @@ body{margin:0;background:var(--void)}
 #ar .pasos li{counter-increment:paso;display:grid;grid-template-columns:auto minmax(0,1fr);gap:13px;align-items:start;
   background:var(--screen);border:3px solid var(--line);padding:13px 15px;box-shadow:0 4px 0 0 var(--dark)}
 #ar .pasos li::before{content:counter(paso);width:26px;height:26px;background:var(--c);color:var(--void);
-  font-family:"Press Start 2P","Courier New",monospace;font-size:10px;display:grid;place-items:center}
+  font-family:var(--fuente-titulo);font-size:10px;display:grid;place-items:center}
 #ar .pasos p{font-size:clamp(11.5px,2.5vw,13.5px);line-height:1.8}
 #ar .pasos .cont{display:flex;flex-direction:column;gap:11px;min-width:0}
 #ar .pasos b,#ar .apunte b{font-weight:400;color:var(--text);background:var(--inset);border:2px solid var(--line);padding:0 4px;
@@ -210,7 +212,7 @@ body{margin:0;background:var(--void)}
 #ar .plan summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:11px;padding:12px 14px;
   font-size:clamp(11px,2.4vw,12.5px);letter-spacing:.05em;line-height:1.6;color:var(--gold)}
 #ar .plan summary::-webkit-details-marker{display:none}
-#ar .plan summary::before{content:"+";flex:none;font-family:"Press Start 2P","Courier New",monospace;font-size:11px}
+#ar .plan summary::before{content:"+";flex:none;font-family:var(--fuente-titulo);font-size:11px}
 #ar .plan[open] summary::before{content:"-"}
 #ar .plan summary:hover{color:var(--text)}
 #ar .plan[open] summary{border-bottom:3px dashed var(--gold-off)}
@@ -265,6 +267,28 @@ body{margin:0;background:var(--void)}
 #ar .cred a{color:var(--gold);text-decoration:none;border-bottom:2px solid var(--gold-off);padding:1px 3px}
 #ar .cred a:hover{background:var(--gold);color:var(--void);border-bottom-color:var(--gold)}
 @media (prefers-reduced-motion:reduce){#ar *{animation:none!important;transition:none!important}#ar .malla{display:none}}
+/* ---------- modo legible ----------
+   Atkinson Hyperlegible, del Braille Institute, disenada para baja vision:
+   distingue la I mayuscula de la l minuscula y del 1, y la O del cero. Al
+   cambiar de familia hay que deshacer lo que el pixel art necesitaba y ella
+   no: el espaciado entre letras, las mayusculas del titular y el suavizado
+   apagado. Y subir los tamanos que venian de Press Start 2P, que ocupa mucho
+   mas por caracter. */
+:root.legible{
+  --fuente:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --fuente-titulo:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+}
+:root.legible #ar{-webkit-font-smoothing:antialiased}
+:root.legible #ar,:root.legible #ar *{letter-spacing:normal}
+:root.legible #ar h1{font-size:clamp(20px,5.2vw,30px);line-height:1.3;text-transform:none;max-width:22ch}
+:root.legible #ar .label{font-size:clamp(13px,2.7vw,15px);line-height:1.35}
+:root.legible #ar .meta{font-size:12.5px}
+:root.legible #ar .tx{font-size:clamp(13.5px,2.8vw,15px)}
+:root.legible #ar .pasos li::before{font-size:13px}
+:root.legible #ar .plan summary::before{font-size:15px}
+:root.legible #ar .ajustes dt{font-size:11px}
+:root.legible #ar .ajustes dd{font-size:14px}
+
 @media (max-width:660px){#ar .g4,#ar .g5,#ar .g6{grid-template-columns:repeat(2,minmax(0,1fr));max-width:400px}
   /* a 2 columnas el ensanche se pasa a la ultima, o Gafas dejaria un hueco a su lado */
   #ar .g5 .card:nth-child(2){grid-column:auto}
@@ -275,6 +299,7 @@ body{margin:0;background:var(--void)}
   #ar .pantalla{gap:14px}
   #ar .zona{gap:12px}
   #ar h1{font-size:clamp(13px,3.6vw,19px)}
+  :root.legible #ar h1{font-size:clamp(17px,4.4vw,24px)}
   #ar .slot{max-width:58px}
   #ar .g6 .slot{max-width:44px;padding:5px}
   #ar .g6 .card{padding:8px 6px;gap:5px}
@@ -1909,6 +1934,7 @@ body{margin:0;background:var(--void)}
     // si ya lo tenia activado, se precarga para que el primer clic no llegue tarde
     if(localStorage.getItem('andared-sonido')==='si'){ sonido=true; marca('sonido'); preparaClic(); }
     if(localStorage.getItem('andared-musica')==='si'){ musica=true; marca('musica'); musicaEnMarcha(); }
+    if(localStorage.getItem('andared-letra')==='legible'){ doc.classList.add('legible'); marca('letra'); }
   }catch(e){}
   function cierraLupa(){ lupa.classList.remove('abierta'); }
 
@@ -1919,6 +1945,7 @@ body{margin:0;background:var(--void)}
       tgl.setAttribute('aria-pressed', act);
       if(cual==='tema'){ pintaTema(act); recuerda('andared-tema', act?'claro':'oscuro'); }
       if(cual==='sonido'){ sonido=act; recuerda('andared-sonido', act?'si':'no'); }
+      if(cual==='letra'){ doc.classList.toggle('legible', act); recuerda('andared-letra', act?'legible':'pixel'); }
       if(cual==='musica'){
         musica=act; recuerda('andared-musica', act?'si':'no');
         if(act) musicaEnMarcha(); else musicaEnPausa();
